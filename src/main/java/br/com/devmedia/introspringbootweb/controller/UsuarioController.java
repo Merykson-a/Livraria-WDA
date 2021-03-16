@@ -29,7 +29,7 @@ public class UsuarioController {
 
     @GetMapping("/cadastro")
     public String preSalvar(@ModelAttribute("usuario") Usuario usuario) {
-        return "/usuario/add";
+        return "usuario/add";
     }
 
     @PostMapping("/salvar")
