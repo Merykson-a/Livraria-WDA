@@ -60,7 +60,7 @@ public class AluguelController {
         model.addAttribute("alugueis", listAlugueis);
         model.addAttribute("pesquisa", pesquisa);
         model.addAttribute("status", status);
-        return "/aluguel/list";
+        return "aluguel/list";
     }
 
     @GetMapping("/cadastro")
@@ -68,7 +68,7 @@ public class AluguelController {
             , ModelMap model) {
         model.addAttribute("livros", aluguelService.recuperarLivro());
         model.addAttribute("teste", usuarioId);
-        return new ModelAndView("/aluguel/add", model);
+        return new ModelAndView("aluguel/add", model);
     }
    /* @GetMapping("/cadastro")
     public String preSalvar(@ModelAttribute("aluguel") Aluguel aluguel, @PathVariable("usuarioId") long usuarioId) {
@@ -83,7 +83,7 @@ public class AluguelController {
             return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
         } else {
             if (result.hasErrors()) {
-                return "/aluguel/add";
+                return "aluguel/add";
             }
             aluguelService.salvar(aluguel, usuarioId);
             attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
@@ -98,7 +98,7 @@ public class AluguelController {
         model.addAttribute("livros", aluguelService.recuperarLivroList());
         model.addAttribute("aluguel", aluguel);
         model.addAttribute("usuarioId", usuarioId);
-        return new ModelAndView("/aluguel/add", model);
+        return new ModelAndView("aluguel/add", model);
     }
 
     @PutMapping("/salvar")
@@ -111,7 +111,7 @@ public class AluguelController {
             return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/" + aluguel.getId() + "/atualizar");
         } else {
             if (result.hasErrors()) {
-                return new ModelAndView("/aluguel/add");
+                return new ModelAndView("aluguel/add");
             }
             aluguelService.atualizar(aluguel, usuarioId);
             attr.addFlashAttribute("mensagem", "Aluguel atualizado com sucesso.");
@@ -136,6 +136,6 @@ public class AluguelController {
         model.addAttribute("aluguel", aluguel);
         model.addAttribute("usuarioId", usuarioId);
         model.addAttribute("status", 1);
-        return new ModelAndView("/aluguel/add", model);
+        return new ModelAndView("aluguel/add", model);
     }
 }

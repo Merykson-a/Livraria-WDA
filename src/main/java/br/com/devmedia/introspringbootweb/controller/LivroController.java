@@ -28,19 +28,19 @@ public class LivroController {
         model.addAttribute("livros", livroService.recuperarPorEditora(editoraId));
         model.addAttribute("editoras", livroService.recuperarPorIdEditora(editoraId));
         model.addAttribute("editoraId", editoraId);
-        return new ModelAndView("/livro/list", model);
+        return new ModelAndView("livro/list", model);
     }
 
     @GetMapping("/cadastro")
     public String preSalvar(@ModelAttribute("livro") Livro livro, @PathVariable("editoraId") long editoraId) {
-        return "/livro/add";
+        return "livro/add";
     }
 
     @PostMapping("/salvar")
     public String salvar(@PathVariable("editoraId") long editoraId, @Validated @ModelAttribute("livro")
             Livro livro, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
-            return "/livro/add";
+            return "livro/add";
         }
 
         livroService.salvar(livro, editoraId);
@@ -63,14 +63,14 @@ public class LivroController {
        Livro livro = livroService.recuperarPorEditoraIdELivroId(editoraId, livroId);
         model.addAttribute("livro", livro);
         model.addAttribute("editoraId", editoraId);
-        return new ModelAndView("/livro/add", model);
+        return new ModelAndView("livro/add", model);
     }
 
     @PutMapping("/salvar")
     public ModelAndView atualizar(@PathVariable("editoraId") long editoraId, @Validated @ModelAttribute("livro")
             Livro livro, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
-            return new ModelAndView("/livro/add");
+            return new ModelAndView("livro/add");
         }
         Livro teste = livroService.recuperarPorId(livro.getId());
         if(teste.getAlugados() <= livro.getQuantidade()) {

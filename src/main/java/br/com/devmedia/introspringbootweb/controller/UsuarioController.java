@@ -24,7 +24,7 @@ public class UsuarioController {
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("usuarios", usuarioService.recuperar());
 /*      model.addAttribute("livros", usuarioService.recuperarLivro());*/
-        return new ModelAndView("/usuario/list", model);
+        return new ModelAndView("usuario/list", model);
     }
 
     @GetMapping("/cadastro")
@@ -35,7 +35,7 @@ public class UsuarioController {
     @PostMapping("/salvar")
     public String salvar(@Validated @ModelAttribute("usuario") Usuario usuario, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
-            return "/usuario/add";
+            return "usuario/add";
         }
         usuarioService.salvar(usuario);
         attr.addFlashAttribute("mensagem", "Usuario criado com sucesso.");
@@ -46,12 +46,12 @@ public class UsuarioController {
     public ModelAndView preAtualizar(@PathVariable("id") long id, ModelMap model) {
         Usuario usuario = usuarioService.recuperarPorId(id);
         model.addAttribute("usuario", usuario);
-        return new ModelAndView("/usuario/add", model);
+        return new ModelAndView("usuario/add", model);
     }
     @PutMapping("/salvar")
     public ModelAndView atualizar(@Validated @ModelAttribute("usuario") Usuario usuario, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
-            return new ModelAndView("/usuario/add");
+            return new ModelAndView("usuario/add");
         }
 
         usuarioService.atualizar(usuario);

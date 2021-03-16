@@ -28,7 +28,7 @@ public class UploadController {
     @GetMapping("/edit")
     public ModelAndView index(ModelMap model) {
         model.addAttribute("imagens", imagemRepository.findAll());
-        return new ModelAndView("/imagem/add", model);
+        return new ModelAndView("imagem/add", model);
     }
     /*@GetMapping("/edit")
     public String index() {
