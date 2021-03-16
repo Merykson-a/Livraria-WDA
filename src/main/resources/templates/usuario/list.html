@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spotmusic</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link rel="icon"
+          type="image/svg"
+          href="https://www.flaticon.com/svg/vstatic/svg/1459/1459381.svg?token=exp=1613573862~hmac=7fd25dac39a87e4db4449da382a855be" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Lista de usuários</h1>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" th:href="@{/usuarios/cadastro}">Novo Usuário</a>
+    </div>
+    <hr/>
+
+    <div th:if="${usuarios != null}">
+        <h4>
+            Usuarios
+        </h4>
+
+        <div th:if="${mensagem != null}">
+            <div class="alert alert-info" role="alert">
+                <span th:text="${mensagem}">mensagem</span>
+            </div>
+        </div>
+
+        <div th:if="${mensagemerro != null}" class="alert alert-danger" role="alert">
+            <span th:text="${mensagemerro}">Erro:</span>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr class="text-center">
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Cidade</th>
+                <th>Email</th>
+                <th>Ação</th>
+
+
+            </tr>
+            </thead>
+            <tr th:each="usuario : ${usuarios}" class="text-center">
+                <td >
+                    <a th:text="${usuario.nome}" >Nome</a>
+                </td>
+                <td th:text="${usuario.endereco}">Endereço</td>
+                <td th:text="${usuario.cidade}">Cidade</td>
+                <td th:text="${usuario.email}">Email</td>
+                <td>
+                    <a class="btn btn-sm btn-info" th:href="@{/usuarios/{id}/atualizar(id=${usuario.id})}">Editar</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/usuarios/{id}/remover(id=${usuario.id})}">Excluir</a>
+                    <a class="btn btn-sm btn-dark" th:href="@{/usuarios/{id}/alugueis/listar(id=${usuario.id})}">Ver alugueis</a>
+                </td>
+            </tr>
+
+            <!--<select th:field="*{livros}">
+                <option value=""> &#45;&#45; </option>
+                <option value ="customer" th:each="livro : ${livros}"
+                        th:utext="${livro.nome}"/>
+            </select>-->
+        </table>
+    </div>
+
+    <div th:if="${#lists.isEmpty(usuarios)}">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 usuarios cadastrados!
+        </div>
+    </div>
+    <hr/>
+
+    <a class="btn btn-light" href="/home">Voltar</a>
+    <hr/>
+
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>

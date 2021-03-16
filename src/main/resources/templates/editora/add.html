@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adicionar editora</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Adicionar editora</h1>
+    </div>
+
+    <h4>
+        Nova editora
+
+    </h4>
+
+    <form th:action="@{/editoras/salvar}" th:object="${editora}" th:method="${editora.id} == 0 ? post : put">
+
+        <div th:if="${editora.id != 0}">
+            <input type="hidden" name="_method" value="put">
+        </div>
+
+
+        <div class="row">
+            <input id="id" type="hidden" th:field="*{id}"/>
+            <div class="form-group col-md-4">
+                <label for="nome">Nome:</label>
+                <input class="form-control" id="nome" type="text" th:field="*{nome}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="cidade">Cidade:</label>
+                <input class="form-control" id="cidade" type="text" th:field="*{cidade}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+
+    </form>
+
+    <hr/>
+
+    <a class="btn btn-light" th:href="@{/editoras/listar}">Voltar</a>
+
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>

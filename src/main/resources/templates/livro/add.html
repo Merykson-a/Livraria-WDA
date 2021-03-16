@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adicionar Livro</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Adicionar livro</h1>
+    </div>
+
+    <h4>
+        Novo livro
+    </h4>
+
+    <form th:action="@{/editoras/{editoraId}/livros/salvar(editoraId=${editoraId})}"
+          th:object="${livro}"
+          th:method="${livro.id} == 0 ? post : put">
+
+        <div th:if="${livro.id != 0}">
+            <input type="hidden" name="_method" value="put">
+        </div>
+
+        <div th:if="${mensagemerro != null}" class="alert alert-danger" role="alert">
+            <span th:text="${mensagemerro}">Erro:</span>
+        </div>
+
+        <div class="row">
+            <input id="id" type="hidden" th:field="*{id}"/>
+
+            <div class="form-group col-md-4">
+                <label for="nome">Nome:</label>
+                <input class="form-control" id="nome" type="text" th:field="*{nome}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}"
+                     th:errors="*{nome}"></div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="autor">Autor:</label>
+                <input class="form-control" id="autor" type="text" th:field="*{autor}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('autor')}"
+                     th:errors="*{autor}"></div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="lancamento">Lançamento:</label>
+                <input class="form-control" id="lancamento" type="text" th:field="*{lancamento}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('lancamento')}"
+                     th:errors="*{lancamento}"></div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="quantidade">Quantidade de Livros:</label>
+                <input class="form-control" id="quantidade" type="number" th:field="*{quantidade}" required/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('quantidade')}"
+                     th:errors="*{quantidade}"></div>
+            </div>
+
+            <input type="hidden" th:field="*{alugados}" value="0"/>
+
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+
+    </form>
+    <hr/>
+
+    <a class="btn btn-light" th:href="@{/editoras/{editoraId}/livros/listar(editoraId=${editoraId})}">Voltar</a>
+
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>

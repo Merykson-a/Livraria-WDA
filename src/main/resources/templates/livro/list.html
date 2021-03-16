@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Livraria WDA</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Lista de livros</h1>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" th:href="@{/editoras/{editoraId}/livros/cadastro(editoraId=${editoraId})}">
+            Novo livro</a>
+    </div>
+
+    <hr/>
+    <div th:if="${livros != null}">
+        <h4>
+            Livros da editora
+        </h4>
+
+        <div th:if="${mensagem != null}">
+            <div class="alert alert-info" role="alert">
+                <span th:text="${mensagem == null ? '&nbsp;' : mensagem}">mensagem</span>
+            </div>
+        </div>
+        <div th:if="${mensagemerro != null}" class="alert alert-danger" role="alert">
+            <span th:text="${mensagemerro}">Erro:</span>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr class="text-center">
+                <th>Nome</th>
+                <th>Autor</th>
+                <th>Nome da editora</th>
+                <th>Lançamento</th>
+                <th>Quantidade de livros</th>
+                <th>Total alugado</th>
+                <th>Ação</th>
+            </tr>
+            </thead>
+            <tr th:each="livro : ${livros}" class="text-center">
+                <td th:text="${livro.nome}">Nome</td>
+                <td th:text="${livro.autor}">Autor</td>
+                <td th:each="editora : ${editoras}" th:text="${editora.nome}">Nome da editora</td>
+                <td th:text="${livro.lancamento}">Lançamento</td>
+                <td th:text="${livro.quantidade}">Quantidade de livros</td>
+                <td th:text="${livro.alugados}">Total alugado</td>
+                <td>
+                    <a class="btn btn-sm btn-info" th:href="@{/editoras/{editoraId}/livros/{livroId}/atualizar(
+                      editoraId=${editoraId},livroId=${livro.id})}">Editar</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/editoras/{editoraId}/livros/{livroId}//remover(
+                      editoraId=${editoraId},livroId=${livro.id})}">Excluir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${#lists.isEmpty(livros)}">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 livros cadastrados!
+        </div>
+    </div>
+
+    <hr/>
+    <a class="btn btn-light" th:href="@{/editoras/listar}">Voltar</a>
+
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--https://www.flaticon.com/premium-icon/icons/svg/2702/2702197.svg-->
+    <title>Editoras</title>
+    <link rel="icon"
+          type="image/svg"
+          href="https://www.flaticon.com/premium-icon/icons/svg/3940/3940130.svg" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Crud Editora/Livro</h1>
+    </div>
+
+    <div class="btn-toolbar justify-content-between" role="toolbar">
+
+        <div class="btn-group mr-2" role="group">
+            <a th:href="@{/editoras/cadastro}"><button type="button" class="btn btn-primary">Nova Editora</button></a>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text" id="btnGroupAddon2">Lupa</div>
+            </div>
+            <form th:action="@{/editoras/listar/search}" method="post">
+                <input name="pesquisa" type="text" class="form-control" placeholder="Digite para pesquisar" aria-describedby="btnGroupAddon2">
+                <input type="hidden" th:value="${sortField}" name="sortField">
+                <input type="hidden" th:value="${sortDir}" name="sortDir">
+            </form>
+        </div>
+
+        <div class="btn-group mr-2" role="group" th:if="${status == 0}">
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 5 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 10 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 15 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button></a>
+        </div>
+        <div class="btn-group mr-2" role="group" th:if="${status == 1}">
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 5 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 10 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 15 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + ${totalItems} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button></a>
+        </div>
+    </div>
+
+    <hr/>
+    <div th:if="${status == 1}">
+        <div class="alert alert-light" role="alert">
+            <span><i>Pesquisando por: [[${pesquisa}]]</i></span>
+        </div>
+    </div>
+    <div th:if="${editoras != null}">
+        <h4>
+            Editoras ([[${totalItems}]]) ( Pág: [[${currentPage}]]/[[${totalPages}]] )
+        </h4>
+        <div th:if="${mensagem != null}">
+            <div class="alert alert-info" role="alert">
+                <span th:text="${mensagem}">mensagem</span>
+            </div>
+        </div>
+        <div th:if="${mensagemerro != null}" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span th:text="${mensagemerro}">Erro:</span>
+        </div>
+
+        <table class="table">
+            <thead>
+            <div th:if="${status == 0}">
+            <tr class="text-center">
+                <th><a data-placement="right" title="teste" th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a></th>
+                <span class="caret"></span>
+                </th>
+                <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=nome&sortDir=' + ${reverseSortDir}}"> Nome</a></th>
+                <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=cidade&sortDir=' + ${reverseSortDir}}">Cidade</a></th>
+                <th>Ações</th>
+
+            </tr>
+            </div>
+            <div th:if="${status == 1}">
+                <tr class="text-center">
+                    <th><a data-placement="right" title="teste" th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id</a></th>
+                    <span class="caret"></span>
+                    </th>
+                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}"> Nome</a></th>
+                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=cidade&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Cidade</a></th>
+                    <th>Ações</th>
+
+                </tr>
+            </div>
+            </thead>
+            <tr th:each="editora : ${editoras}" class="text-center">
+                <td th:text="${editora.id}">Id</td>
+                <td >
+                    <a th:text="${editora.nome}">Nome</a>
+                </td>
+                <td th:text="${editora.cidade}">Cidade</td>
+                <td>
+                    <a class="btn btn-sm btn-info" th:href="@{/editoras/{id}/atualizar(id=${editora.id})}">Editar</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/editoras/{id}/remover(id=${editora.id})}">Excluir</a>
+                    <a class="btn btn-sm btn-dark" th:href="@{/editoras/{id}/livros/listar(id=${editora.id})}">Ver livros cadastrados</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${status == 0}">
+        <nav th:if="${totalPages > 1}">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/editoras/page/' + ${currentPage - 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Anterior</a>
+                </li>
+
+                <li class="page-item disabled">
+                    <span class="page-link" tabindex="-1" th:unless="${currentPage > 1}">Anterior</span>
+                </li>
+
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+            <li class="page-item">
+                <a class="page-link" th:if="${currentPage != i}" th:href="@{'/editoras/page/' + ${i} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+            </li>
+
+               <li class="page-item disabled">
+                   <span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span>
+               </li>
+            </span>
+
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${currentPage + 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Próxima</a>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Próxima</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${totalPages} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Última</a>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Última</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div th:if="${status == 1}">
+        <nav th:if="${totalPages > 1}">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/editoras/page/' + ${currentPage - 1} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Anterior</a>
+                </li>
+
+                <li class="page-item disabled">
+                    <span class="page-link" tabindex="-1" th:unless="${currentPage > 1}">Anterior</span>
+                </li>
+
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+            <li class="page-item">
+                <a class="page-link" th:if="${currentPage != i}" th:href="@{'/editoras/page/' + ${i} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">[[${i}]]</a>
+            </li>
+
+               <li class="page-item disabled">
+                   <span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span>
+               </li>
+            </span>
+
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${currentPage + 1} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Próxima</a>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Próxima</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${totalPages} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Última</a>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Última</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div th:if="${#lists.isEmpty(editoras)}">
+        <div class="alert alert-info" role="alert" th:if="${status == 1}">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 resultados encontrados
+        </div>
+        <div class="alert alert-info" role="alert" th:if="${status == 0}">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 editoras cadastradas!
+        </div>
+    </div>
+
+    <hr/>
+    <div th:if="${status == 1}">
+        <a class="btn btn-light" href="/editoras/listar">Voltar</a>
+    </div>
+    <div th:if="${status == 0}">
+        <a class="btn btn-light" href="/home">Voltar</a>
+    </div>
+    <hr/>
+
+
+
+
+
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>

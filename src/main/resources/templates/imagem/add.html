@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Imagem</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <link rel="icon"
+          type="image/svg"
+          href="teste.png" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Imagem</h1>
+    </div>
+
+    <div class="col-md-6" th:each="imagem : ${imagens}" >
+        <img th:src="@{'/imagem/' + ${imagem.nome}}" width="250px" height="250px">
+    </div>
+
+    <form method="POST" action="/imagem/upload" enctype="multipart/form-data">
+        <input type="file" name="file" class="btn btn-light"/><br/><br/>
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+    <br>
+    <br>
+    <a class="btn btn-light" href="/home">Voltar</a>
+    <hr/>
+
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>

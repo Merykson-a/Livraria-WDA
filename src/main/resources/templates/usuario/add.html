@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adicionar usuário</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Adicionar usuário</h1>
+    </div>
+
+    <h4>
+        Novo usuário
+    </h4>
+
+    <form th:action="@{/usuarios/salvar}" th:method="${usuario.id} == 0 ? post : put" th:object="${usuario}">
+
+        <div th:if="${usuario.id != 0}">
+            <input type="hidden" name="_method" value="put" method="put">
+        </div>
+
+        <div class="row">
+            <input id="id" type="hidden" th:field="*{id}"/>
+            <div class="form-group col-md-4">
+                <label for="nome">Nome:</label>
+                <input class="form-control" id="nome" type="text" th:field="*{nome}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="endereco">Endereço:</label>
+                <input class="form-control" id="endereco" type="text" th:field="*{endereco}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="cidade">Cidade:</label>
+                <input class="form-control" id="cidade" type="text" th:field="*{cidade}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="email">Email:</label>
+                <input class="form-control" id="email" type="email" th:field="*{email}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+
+    </form>
+
+    <hr/>
+
+    <a class="btn btn-light" th:href="@{/usuarios/listar}">Voltar</a>
+
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>

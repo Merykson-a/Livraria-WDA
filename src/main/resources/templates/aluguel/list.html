@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Livraria WDA</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Lista de alugueis</h1>
+    </div>
+<div class="btn-toolbar justify-content-between" role="toolbar">
+    <div>
+        <a class="btn btn-primary" th:href="@{/usuarios/{usuarioId}/alugueis/cadastro(usuarioId=${usuarioId})}">
+            Novo aluguel</a>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon2">Lupa</div>
+        </div>
+        <form th:action="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 5}" method="get">
+            <input name="pesquisa" type="text" class="form-control" placeholder="Digite para pesquisar" aria-describedby="btnGroupAddon2">
+            <input type="hidden" th:value="${sortField}" name="sortField">
+            <input type="hidden" th:value="${sortDir}" name="sortDir">
+        </form>
+    </div>
+    <div class="btn-group mr-2" role="group">
+        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 5 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button></a>
+        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 10 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button></a>
+        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 15 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button></a>
+        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button></a>
+    </div>
+
+</div>
+    <hr/>
+    <div th:if="${status == 1}">
+        <div class="alert alert-light" role="alert">
+            <span><i>Pesquisando por: [[${pesquisa}]]</i></span>
+        </div>
+    </div>
+
+    <div th:if="${alugueis != null}">
+        <h4>
+            Alugueis do usuário ([[${totalItems}]]) ( Pág: [[${currentPage}]]/[[${totalPages}]] )
+        </h4>
+
+        <div th:if="${mensagem != null}">
+            <div class="alert alert-info" role="alert">
+                <span th:text="${mensagem == null ? '&nbsp;' : mensagem}">mensagem</span>
+            </div>
+        </div>
+        <div th:if="${mensagemerro != null}" class="alert alert-danger" role="alert">
+            <span th:text="${mensagemerro}">Erro:</span>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr class="text-center">
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id</a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=livro.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do livro</a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=usuario.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do usuário</a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataAluguel&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data do aluguel</a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=prevDataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Previsão da data da devolução</a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data da devolução</a></td>
+                <th>Ação</th>
+            </tr>
+            </thead>
+            <div >
+
+            </div>
+            <tr th:each="aluguel : ${alugueis}" class="text-center">
+
+                <td th:text="${aluguel.id}">Id</td>
+                <td th:text="${aluguel.livro.nome}">Nome do Livro</td>
+                <!--<td th:text="${aluguel.livro.id}">Nome do Livro</td>-->
+                <td th:text="${aluguel.usuario.nome}">Nome do Usuário</td>
+                <td th:text="${#dates.format(aluguel.dataAluguel, 'dd/MM/yyyy')}">Data do aluguel</td>
+                <td th:text="${#dates.format(aluguel.prevDataDevolucao, 'dd/MM/yyyy')}">Previsão da data da devolução</td>
+                <td th:if="${aluguel.dataDevolucao} == null"><a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/devolver(
+                      usuarioId=${usuarioId},aluguelId=${aluguel.id})}">Devolver</a></td>
+                <td th:if="${aluguel.dataDevolucao} != null" th:text="${#dates.format(aluguel.dataDevolucao, 'dd/MM/yyyy')}"></td>
+                <td>
+                    <a class="btn btn-sm btn-info" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/atualizar(
+                      usuarioId=${usuarioId},aluguelId=${aluguel.id})}" th:if="${aluguel.dataDevolucao} == null">Editar</a>
+                    <a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/remover/{livroId}(
+                      usuarioId=${usuarioId},aluguelId=${aluguel.id},livroId=${aluguel.livro.id})}">Excluir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <nav th:if="${totalPages > 1}">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage - 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Anterior</a>
+            </li>
+
+            <li class="page-item disabled">
+                <span class="page-link" tabindex="-1" th:unless="${currentPage > 1}">Anterior</span>
+            </li>
+
+            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+            <li class="page-item">
+                <a class="page-link" th:if="${currentPage != i}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${i} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">[[${i}]]</a>
+            </li>
+
+               <li class="page-item disabled">
+                   <span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span>
+               </li>
+            </span>
+
+            <li class="page-item">
+                <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage + 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Próxima</a>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link" th:unless="${currentPage < totalPages}">Próxima</span>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${totalPages} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Última</a>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link" th:unless="${currentPage < totalPages}">Última</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <div th:if="${#lists.isEmpty(alugueis)}">
+        <div class="alert alert-info" role="alert" th:if="${status == 1}">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 aluguel encontrado pela pesquisa [[${pesquisa}]]!
+        </div>
+        <div class="alert alert-info" role="alert" th:if="${status == 0}">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            0 aluguel cadastrado!
+        </div>
+    </div>
+
+    <hr/>
+    <div th:if="${status == 0}">
+    <a class="btn btn-light" th:href="@{/usuarios/listar}">Voltar</a>
+    </div>
+    <div th:if="${status == 1}">
+    <a class="btn btn-light" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/listar'}">Voltar</a>
+    </div>
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+
+</div>
+</body>
+</html>
