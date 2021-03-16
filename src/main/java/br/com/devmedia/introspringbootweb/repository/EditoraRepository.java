@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface  EditoraRepository extends JpaRepository<Editora, Long> {
 
-    @Query("select m from Editora m where CAST(e.id as string) like %?1%")
+    @Query("select m from Editora m where cast(e.id as text) like %?1%")
     Page<Editora> findByTodos(String pesquisa, Pageable pageable);
 }
