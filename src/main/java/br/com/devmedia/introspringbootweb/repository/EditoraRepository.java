@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface  EditoraRepository extends JpaRepository<Editora, Long> {
 
-    @Query("select m from Editora m where to_char(m.id, '') like %1% or lower(m.nome) like lower(CONCAT('%' , ?1 , '%')) or lower(m.cidade) like lower(CONCAT('%' , ?1 , '%'))")
+    @Query("select m from Editora m where lower(m.nome) like lower(CONCAT('%' , ?1 , '%')) or lower(m.cidade) like lower(CONCAT('%' , ?1 , '%'))")
     Page<Editora> findByTodos(String pesquisa, Pageable pageable);
 }
