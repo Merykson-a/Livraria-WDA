@@ -40,13 +40,13 @@ public class EditoraController {
 
     @GetMapping("/cadastro")
     public String preSalvar(@ModelAttribute("editora") Editora editora) {
-        return "/editora/add";
+        return "editora/add";
     }
 
     @PostMapping("/salvar")
     public String salvar(@Validated @ModelAttribute("editora") Editora editora, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
-            return "/editora/add";
+            return "editora/add";
         }
         editoraService.salvar(editora);
         attr.addFlashAttribute("mensagem", "Editora cadastrada com sucesso.");
@@ -57,13 +57,13 @@ public class EditoraController {
     public ModelAndView preAtualizar(@PathVariable("id") long id, ModelMap model) {
         Editora editora = editoraService.recuperarPorId(id);
         model.addAttribute("editora", editora);
-        return new ModelAndView("/editora/add", model);
+        return new ModelAndView("editora/add", model);
     }
 
     @PutMapping("/salvar")
     public ModelAndView atualizar(@Validated @ModelAttribute("editora") Editora editora, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
-            return new ModelAndView("/editora/add");
+            return new ModelAndView("editora/add");
         }
 
         editoraService.atualizar(editora);
@@ -137,7 +137,7 @@ public class EditoraController {
         model.addAttribute("status", 1);
         model.addAttribute("pesquisa", pesquisa);
 
-        return "/editora/list";
+        return "editora/list";
     }
 
 
