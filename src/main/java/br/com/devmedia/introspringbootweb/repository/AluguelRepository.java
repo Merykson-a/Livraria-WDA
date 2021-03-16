@@ -15,7 +15,7 @@ public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
     @Query(value = "SELECT a FROM Aluguel a WHERE a.usuario.id = ?1 and (to_char(a.dataAluguel, '%d/%m/%Y') like CONCAT('%' , ?2 , '%') or" +
             " to_char(a.dataDevolucao, '%d/%m/%Y') like CONCAT('%' , ?2 , '%') or" +
             " to_char(a.prevDataDevolucao, '%d/%m/%Y') like CONCAT('%' , ?2 , '%') or" +
-            " a.livro.nome like %?2% or a.usuario.nome like %?2%)")
+            " a.livro.nome like CONCAT('%' , ?2 , '%') or a.usuario.nome like CONCAT('%' , ?2 , '%'))")
     Page<Aluguel> findById(long usuarioId, String pesquisa, Pageable pageable);
 
 }
