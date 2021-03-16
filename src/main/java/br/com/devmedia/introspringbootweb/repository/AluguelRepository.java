@@ -12,9 +12,6 @@ public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
     /*@Query("select m from Aluguel m where m.usuario.id = ?1 and (m.livro.nome like %?2% or m.usuario.nome like %?2%)")
     Page<Aluguel> findById(long usuarioId, String pesquisa, Pageable pageable);*/
 
-    @Query(value = "SELECT a FROM Aluguel a WHERE a.usuario.id = ?1 and (date_format(a.dataAluguel, '%d/%m/%Y') like CONCAT('%' , ?2 , '%') or" +
-            " date_format(a.dataDevolucao, '%d/%m/%Y') like CONCAT('%' , ?2 , '%') or" +
-            " date_format(a.prevDataDevolucao, '%d/%m/%Y') like CONCAT('%' , ?2 , '%') or" +
-            " a.livro.nome like %?2% or a.usuario.nome like %?2%)")
+    @Query(value = "SELECT a FROM Aluguel a WHERE a.usuario.id = ?1")
     Page<Aluguel> findById(long usuarioId, String pesquisa, Pageable pageable);
 }
