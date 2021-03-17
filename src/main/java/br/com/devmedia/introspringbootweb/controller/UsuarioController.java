@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -33,7 +34,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(@Validated @ModelAttribute("usuario") Usuario usuario, BindingResult result, RedirectAttributes attr) {
+    public String salvar(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
             return "usuario/add";
         }
