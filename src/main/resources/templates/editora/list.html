@@ -56,7 +56,7 @@
             <span><i>Pesquisando por: [[${pesquisa}]]</i></span>
         </div>
     </div>
-    <div th:if="${editoras != null}">
+    <div th:if="${editoras != null}" class="table-responsive-sm">
         <div th:if="${totalItems == 0}">
             <h4>
                 Editoras ([[${totalItems}]]) ( Pág: [[${totalPages}]]/[[${totalPages}]] )
