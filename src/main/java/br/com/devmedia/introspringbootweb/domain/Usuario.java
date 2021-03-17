@@ -4,6 +4,7 @@ package br.com.devmedia.introspringbootweb.domain;
 import br.com.devmedia.introspringbootweb.domain.Aluguel;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class Usuario{
 
     @NotBlank(message = "O campo email não pode ser vazio")
     @Column(nullable = false)
+    @Email
     private String email;
 
     @OneToMany
