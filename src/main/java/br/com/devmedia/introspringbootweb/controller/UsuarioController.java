@@ -3,6 +3,7 @@ package br.com.devmedia.introspringbootweb.controller;
 import br.com.devmedia.introspringbootweb.domain.Usuario;
 import br.com.devmedia.introspringbootweb.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,11 @@ public class UsuarioController {
 
     @GetMapping("/listar")
     public ModelAndView listar(ModelMap model) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText("Hello from Spring Boot Application");
+        message.setTo("Merykson.acacio@gmail.com");
+        message.setFrom("Merykson.acacio@gmail.com");
+
         model.addAttribute("usuarios", usuarioService.recuperar());
 /*      model.addAttribute("livros", usuarioService.recuperarLivro());*/
         return new ModelAndView("usuario/list", model);
