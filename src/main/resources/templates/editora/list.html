@@ -57,9 +57,17 @@
         </div>
     </div>
     <div th:if="${editoras != null}">
-        <h4>
-            Editoras ([[${totalItems}]]) ( Pág: [[${currentPage}]]/[[${totalPages}]] )
-        </h4>
+        <div th:if="${totalItems == 0}">
+            <h4>
+                Editoras ([[${totalItems}]]) ( Pág: [[${totalPages}]]/[[${totalPages}]] )
+            </h4>
+        </div>
+        <div th:if="${totalItems > 0}">
+            <h4>
+                Editoras ([[${totalItems}]]) ( Pág: [[${currentPage}]]/[[${totalPages}]] )
+            </h4>
+        </div>
+
         <div th:if="${mensagem != null}">
             <div class="alert alert-info" role="alert">
                 <span th:text="${mensagem}">mensagem</span>
