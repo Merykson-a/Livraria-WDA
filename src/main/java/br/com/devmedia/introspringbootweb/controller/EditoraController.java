@@ -100,7 +100,7 @@ public class EditoraController {
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("sortField", sortField);
         model.addAttribute("sortDir", sortDir);
-        model.addAttribute("reverseSortDir", sortDir.equals("ASC") ? "desc" : "asc");
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         model.addAttribute("editoras", listEditoras);
         model.addAttribute("status", 0);
 
