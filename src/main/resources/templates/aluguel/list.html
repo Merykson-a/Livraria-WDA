@@ -46,10 +46,16 @@
     </div>
 
     <div th:if="${alugueis != null}">
+        <div th:if="${totalItems == 0}">
+        <h4>
+            Alugueis do usuário ([[${totalItems}]]) ( Pág: [[${totalPages}]]/[[${totalPages}]] )
+        </h4>
+        </div>
+        <div th:if="${totalItems > 0}">
         <h4>
             Alugueis do usuário ([[${totalItems}]]) ( Pág: [[${currentPage}]]/[[${totalPages}]] )
         </h4>
-
+        </div>
         <div th:if="${mensagem != null}">
             <div class="alert alert-info" role="alert">
                 <span th:text="${mensagem == null ? '&nbsp;' : mensagem}">mensagem</span>
