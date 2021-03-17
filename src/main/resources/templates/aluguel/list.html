@@ -68,7 +68,7 @@
         <table class="table">
             <thead>
             <tr class="text-center">
-                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id</a><img th:if="${sortDir == 'asc'}" src="/icon/setabaixo.svg" width="25px" height="25px"></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id</a></td>
                 <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=livro.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do livro</a></td>
                 <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=usuario.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do usuário</a></td>
                 <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataAluguel&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data do aluguel</a></td>
