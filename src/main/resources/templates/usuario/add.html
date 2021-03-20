@@ -31,6 +31,9 @@
             <div class="form-group col-md-4">
                 <label for="nome">Nome:</label>
                 <input class="form-control" id="nome" type="text" th:field="*{nome}"/>
+                <div class="invalid-feedback">
+                    Você deve concordar, antes de continuar.
+                </div>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
             </div>
 
