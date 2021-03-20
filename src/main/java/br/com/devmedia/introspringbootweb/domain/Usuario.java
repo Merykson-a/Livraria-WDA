@@ -6,6 +6,7 @@ import br.com.devmedia.introspringbootweb.domain.Aluguel;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -30,7 +31,7 @@ public class Usuario{
 
     @NotBlank(message = "O campo email não pode ser vazio")
     @Column(nullable = false)
-    @Email(message = "Verifique se está no formato email")
+    @Pattern(regexp="[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
     private String email;
 
     @OneToMany
