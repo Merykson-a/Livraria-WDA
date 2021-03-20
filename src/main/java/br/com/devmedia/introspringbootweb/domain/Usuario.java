@@ -31,7 +31,7 @@ public class Usuario{
 
     @NotBlank(message = "O campo email não pode ser vazio")
     @Column(nullable = false)
-    @Pattern(regexp="[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", message = "Insira um email válido")
+    @Pattern(regexp="[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", message = "Insira um email válido, no formato: Email@email.com!")
     private String email;
 
     @OneToMany
