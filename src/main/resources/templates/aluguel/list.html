@@ -84,11 +84,11 @@
             <tr th:each="aluguel : ${alugueis}" class="text-center">
 
                 <td th:text="${aluguel.id}">Id</td>
-                <td th:text="${aluguel.livro.nome}">Nome do Livro</td>
+                <td th:text="${aluguel.livro.nome}">Livro</td>
                 <!--<td th:text="${aluguel.livro.id}">Nome do Livro</td>-->
-                <td th:text="${aluguel.usuario.nome}">Nome do Usuário</td>
+                <td th:text="${aluguel.usuario.nome}">Usuário</td>
                 <td th:text="${#dates.format(aluguel.dataAluguel, 'dd/MM/yyyy')}">Data do aluguel</td>
-                <td th:text="${#dates.format(aluguel.prevDataDevolucao, 'dd/MM/yyyy')}">Previsão da data da devolução</td>
+                <td th:text="${#dates.format(aluguel.prevDataDevolucao, 'dd/MM/yyyy')}">Previsão da devolução</td>
                 <td th:if="${aluguel.dataDevolucao} == null"><a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/devolver(
                       usuarioId=${usuarioId},aluguelId=${aluguel.id})}">Devolver</a></td>
                 <td th:if="${aluguel.dataDevolucao} != null" th:text="${#dates.format(aluguel.dataDevolucao, 'dd/MM/yyyy')}"></td>
