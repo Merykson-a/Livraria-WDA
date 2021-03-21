@@ -68,12 +68,12 @@
         <table class="table">
             <thead>
             <tr class="text-center">
-                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id</a></td>
-                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=livro.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do livro</a></td>
-                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=usuario.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do usuário</a></td>
-                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataAluguel&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data do aluguel</a></td>
-                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=prevDataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Previsão da data da devolução</a></td>
-                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data da devolução</a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i class="fa fa-fw" th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=livro.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do livro<i class="fa fa-fw" th:classappend="${sortField} == livro.nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=usuario.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome do usuário<i class="fa fa-fw" th:classappend="${sortField} == usuario.nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataAluguel&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data do aluguel<i class="fa fa-fw" th:classappend="${sortField} == dataAluguel ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=prevDataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Previsão da data da devolução<i class="fa fa-fw" th:classappend="${sortField} == prevDataDevolucao ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
+                <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data da devolução<i class="fa fa-fw" th:classappend="${sortField} == dataDevolucao ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
                 <th>Ação</th>
             </tr>
             </thead>
