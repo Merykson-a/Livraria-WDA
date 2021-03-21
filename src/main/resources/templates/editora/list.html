@@ -94,11 +94,11 @@
             <div th:if="${status == 1}">
                 <tr class="text-center">
                     <th><a data-placement="right" title="teste" th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id</a></th>
-                    <span class="caret"></span>
                     </th>
                     <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}"> Nome</a></th>
                     <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=cidade&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Cidade</a></th>
                     <th>Ações</th>
+                    <i class="icon-sort-down"></i>
 
                 </tr>
             </div>
