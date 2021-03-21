@@ -82,9 +82,7 @@
             <thead>
             <div th:if="${status == 0}">
             <tr class="text-center">
-                <th><a data-placement="right" title="teste" th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a></th>
-                <span class="caret"></span>
-                </th>
+                <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a></th>
                 <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=nome&sortDir=' + ${reverseSortDir}}"> Nome</a></th>
                 <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=cidade&sortDir=' + ${reverseSortDir}}">Cidade</a></th>
                 <th>Ações</th>
@@ -93,8 +91,7 @@
             </div>
             <div th:if="${status == 1}">
                 <tr class="text-center">
-                    <th><a data-placement="right" title="teste" th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i class="fas fa-sort"></i></a></th>
-                    </th>
+                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id</a></th> <i class="fa fa-caret-up" data-order="up"></i>
                     <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}"> Nome</a></th>
                     <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=cidade&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Cidade</a></th>
                     <th>Ações</th>
