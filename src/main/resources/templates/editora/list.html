@@ -198,7 +198,7 @@
                     <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${totalPages} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Última</a>
                 </li>
                 <li class="page-item disabled">
-                    <span class="page-link" th:unless="${currentPage < totalPages}">Última</span></a>
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Última</span>
                 </li>
             </ul>
         </nav>
