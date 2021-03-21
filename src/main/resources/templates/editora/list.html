@@ -92,7 +92,7 @@
             </div>
             <div th:if="${status == 1}">
                 <tr class="text-center">
-                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i class="fa fa-fw" th:classappend="${sortField == id} ? fa-sort-desc : fa-sort-asc"></i></a></th>
+                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i class="fa fa-fw" th:classappend="${sortField} == id ? fa-sort-desc : fa-sort-asc"></i></a></th>
                     <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}"> Nome</a></th>
                     <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=cidade&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Cidade</a></th>
                     <th>Ações</th>
