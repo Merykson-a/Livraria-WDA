@@ -18,18 +18,18 @@ public class Usuario{
     private long id;
 
     @Column(nullable = false, length = 60)
-    @NotBlank(message = "O campo nome não pode ser vazio")
+    @NotBlank(message = "O campo nome não pode ser vazio!")
     private String nome;
 
     @Column(nullable = false)
-    @NotBlank(message = "O campo endereço não pode ser vazio")
+    @NotBlank(message = "O campo endereço não pode ser vazio!")
     private String endereco;
 
     @Column(nullable = false)
-    @NotBlank(message = "O campo cidade não pode ser vazio")
+    @NotBlank(message = "O campo cidade não pode ser vazio!")
     private String cidade;
 
-    @NotBlank(message = "O campo email não pode ser vazio")
+    @NotBlank(message = "O campo email não pode ser vazio!")
     @Column(nullable = false)
     @Pattern(regexp="[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", message = "Insira um email válido, no formato: Email@email.com!")
     private String email;
