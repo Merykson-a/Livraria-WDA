@@ -111,7 +111,7 @@
                     <a class="btn btn-sm btn-info" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/atualizar(
                       usuarioId=${usuarioId},aluguelId=${aluguel.id})}" th:if="${aluguel.dataDevolucao} == null">Editar</a>
                     <a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/remover/{livroId}(
-                      usuarioId=${usuarioId},aluguelId=${aluguel.id},livroId=${aluguel.livro.id})}">Excluir</a>
+                      usuarioId=${usuarioId},aluguelId=${aluguel.id},livroId=${aluguel.livro.id})}" th:if="${aluguel.dataDevolucao} != null">Excluir</a>
                 </td>
             </tr>
         </table>
