@@ -41,13 +41,13 @@
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
-                            th:text="${livro.nome} + ' - Editora' +  ${livro.editora.nome}"/>
+                            th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
                 </select>
                 <select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:if="${aluguel.id == 0}">
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
-                            th:text="${livro.nome} + ' - Editora' +  ${livro.editora.nome}"/>
+                            th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
                 </select>
 
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}"></div>
@@ -78,7 +78,7 @@
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
-                            th:text="${livro.nome} + ' - Editora' +  ${livro.editora.nome}"/>
+                            th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
                 </select>
 
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}"></div>
