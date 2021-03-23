@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class AluguelController {
         Date dataAgora = new Date();
 
         SimpleDateFormat formato = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss.S");
+                "yyyy-MM-dd 00:00:00.0");
 
         int status = 0;
 
