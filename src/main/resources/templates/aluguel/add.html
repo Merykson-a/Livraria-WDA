@@ -36,8 +36,7 @@
 
             <div class="form-group col-md-4">
                 <label for="livro">Nome do livro:</label>
-
-                <select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:disabled="${aluguel.id != 0}">
+                <select class="custom-select mr-sm-2" th:field="*{livro.id}" required>
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
