@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -46,7 +47,7 @@ public class AluguelController {
         Page<Aluguel> page = aluguelService.findPaginated(usuarioId, pesquisa, pageNo, pageSize, sortField, sortDir);
         List<Aluguel> listAlugueis = page.getContent();
 
-        LocalDate dataAgora = LocalDate.now();
+        Date dataAgora = new Date();
 
         int status = 0;
 
