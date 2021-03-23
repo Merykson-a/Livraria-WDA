@@ -36,7 +36,7 @@
 
             <div class="form-group col-md-4">
                 <label for="livro">Nome do livro:</label>
-                <select class="custom-select mr-sm-2" th:field="*{livro.id}" required>
+                <select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:disabled="${aluguel.id != 0}">
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
@@ -56,13 +56,13 @@
 
             <div class="form-group col-md-4">
                 <label for="dataAluguel">Data do aluguel:</label>
-                <input required="on" class="form-control" id="dataAluguel" type="date" th:field="*{dataAluguel}"/>
+                <input th:disabled="${status == 1}" required="on" class="form-control" id="dataAluguel" type="date" th:field="*{dataAluguel}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataAluguel')}" th:errors="*{dataAluguel}"></div>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="prevDataDevolucao">Data de previsão da devolução:</label>
-                <input class="form-control" id="prevDataDevolucao" type="date" th:field="*{prevDataDevolucao}"/>
+                <input th:disabled="${status == 1}" class="form-control" id="prevDataDevolucao" type="date" th:field="*{prevDataDevolucao}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('prevDataDevolucao')}" th:errors="*{prevDataDevolucao}"></div>
             </div>
             <input type="hidden" th:field="*{livro.id}" th:if="${aluguel.id != 0}"/>
