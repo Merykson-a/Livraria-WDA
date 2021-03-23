@@ -52,7 +52,7 @@ public class AluguelController {
         Date dataAgora = new Date();
 
         SimpleDateFormat formato = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss");
+                "yyyy-MM-dd HH:mm:ss.SSS");
 
 
 
