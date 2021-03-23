@@ -139,7 +139,7 @@ public class AluguelController {
     public ModelAndView preDevolver(@PathVariable("usuarioId") long usuarioId, @PathVariable("aluguelId")
             long aluguelId, ModelMap model) {
         Aluguel aluguel = aluguelService.recuperarPorUsuarioIdEAluguelId(usuarioId, aluguelId);
-        model.addAttribute("livros", aluguelService.recuperarLivro());
+        model.addAttribute("livros", aluguelService.recuperarLivroList());
         model.addAttribute("aluguel", aluguel);
         model.addAttribute("usuarioId", usuarioId);
         model.addAttribute("status", 1);
