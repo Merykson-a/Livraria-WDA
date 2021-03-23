@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -46,7 +48,7 @@ public class AluguelController {
         Page<Aluguel> page = aluguelService.findPaginated(usuarioId, pesquisa, pageNo, pageSize, sortField, sortDir);
         List<Aluguel> listAlugueis = page.getContent();
 
-        LocalDate dataAgora = LocalDate.now();
+        LocalDateTime dataAgora = LocalDateTime.now();
 
         int status = 0;
 
