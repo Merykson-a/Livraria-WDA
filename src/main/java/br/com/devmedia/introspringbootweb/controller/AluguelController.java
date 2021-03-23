@@ -49,8 +49,6 @@ public class AluguelController {
 
         LocalDateTime dataAgora = LocalDateTime.now();
 
-        System.out.print(dataAgora);
-
         int status = 0;
 
         if (pesquisa != "") {
