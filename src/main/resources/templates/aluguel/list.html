@@ -108,8 +108,8 @@
                 <div th:if="${aluguel.dataDevolucao} == null">
                 <td><a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/devolver(
                       usuarioId=${usuarioId},aluguelId=${aluguel.id})}">Devolver</a></td>
-                    <td th:if="${dataAtual} > data.prevDataDevolucao">Aluguel em atraso</td>
-                    <td th:unless="${dataAtual} > data.prevDataDevolucao">Aluguel em dias</td>
+                    <!--<td th:if="${dataAtual} > data.prevDataDevolucao">Aluguel em atraso</td>
+                    <td th:unless="${dataAtual} > data.prevDataDevolucao">Aluguel em dias</td>-->
                 </div>
                 <div th:if="${aluguel.dataDevolucao} != null" >
                     <td th:text="${#dates.format(aluguel.dataDevolucao, 'dd/MM/yyyy')}"></td>
