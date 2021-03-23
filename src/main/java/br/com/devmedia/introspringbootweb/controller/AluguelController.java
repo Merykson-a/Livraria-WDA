@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -45,6 +46,9 @@ public class AluguelController {
 
         Page<Aluguel> page = aluguelService.findPaginated(usuarioId, pesquisa, pageNo, pageSize, sortField, sortDir);
         List<Aluguel> listAlugueis = page.getContent();
+
+        LocalDateTime dataAgora = LocalDateTime.now();
+
         int status = 0;
 
         if (pesquisa != "") {
@@ -60,6 +64,7 @@ public class AluguelController {
         model.addAttribute("alugueis", listAlugueis);
         model.addAttribute("pesquisa", pesquisa);
         model.addAttribute("status", status);
+        model.addAttribute("dataAtual", dataAgora);
         return "aluguel/list";
     }
 
