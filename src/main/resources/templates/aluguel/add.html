@@ -32,23 +32,23 @@
             <span th:text="${mensagemerro}">Erro:</span>
         </div>
 
-        <div class="row" th:if="${status != 1}">
+        <div class="row">
 
             <div class="form-group col-md-4">
                 <label for="livro">Nome do livro:</label>
 
-                <select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:if="${aluguel.id != 0}" disabled="disabled">
+                <select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:disabled="${aluguel.id != 0}">
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
                             th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
                 </select>
-                <select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:if="${aluguel.id == 0}">
+                <!--<select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:if="${aluguel.id == 0}">
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
                             th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
-                </select>
+                </select>-->
 
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}"></div>
             </div>
