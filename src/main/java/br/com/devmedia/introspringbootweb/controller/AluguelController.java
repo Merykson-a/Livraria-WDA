@@ -49,7 +49,7 @@ public class AluguelController {
         Page<Aluguel> page = aluguelService.findPaginated(usuarioId, pesquisa, pageNo, pageSize, sortField, sortDir);
         List<Aluguel> listAlugueis = page.getContent();
 
-        LocalDateTime dataAgora = LocalDateTime.now();
+        LocalDate dataAgora = LocalDate.now();
 
         int status = 0;
 
