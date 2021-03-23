@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 
@@ -49,12 +49,10 @@ public class AluguelController {
         Page<Aluguel> page = aluguelService.findPaginated(usuarioId, pesquisa, pageNo, pageSize, sortField, sortDir);
         List<Aluguel> listAlugueis = page.getContent();
 
-        Date dataAgora = new Date();
+        LocalDateTime dataAgora = LocalDateTime.now();
 
         SimpleDateFormat formato = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss.SSS");
-
-
+                "yyyy-MM-dd HH:mm:ss.S");
 
         int status = 0;
 
