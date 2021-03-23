@@ -82,7 +82,7 @@
         </div>
 
         <table class="table">
-            <thead>
+            <thead class="thead-light">
             <tr class="text-center">
                 <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i class="fa fa-fw" th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
                 <td><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=livro.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Livro<i class="fa fa-fw" th:classappend="${sortField} == livro.nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></td>
