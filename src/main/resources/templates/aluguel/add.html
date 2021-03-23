@@ -72,13 +72,11 @@
         <div class="row" th:if="${status == 1}">
 
             <div class="form-group col-md-4">
-                <label for="livro">Nome do livro:</label>
-
+                <label for="livro">Nome do livro:</label
                 <select class="form-control" th:field="*{livro.id}" required th:if="${aluguel.id != 0}" disabled="disabled">
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
-                            th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}" selected/>
+                            th:text="${livro.nome}" selected/>
                 </select>
-
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}"></div>
             </div>
 
