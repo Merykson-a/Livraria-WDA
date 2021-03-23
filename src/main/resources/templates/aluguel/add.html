@@ -14,7 +14,6 @@
 <div class="container">
     <div class="jumbotron">
         <h1>Adicionar aluguel</h1>
-        <div th:insert="menu/header :: header"></div>
     </div>
 
     <h4>
@@ -43,7 +42,6 @@
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
                             th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
                 </select>
-                <!--Gambiarra que deu certo de outro jeito-->
                 <!--<select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:if="${aluguel.id == 0}">
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
@@ -64,6 +62,7 @@
                 <input th:disabled="${status == 1}" class="form-control" id="prevDataDevolucao" type="date" th:field="*{prevDataDevolucao}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('prevDataDevolucao')}" th:errors="*{prevDataDevolucao}"></div>
             </div>
+            <input id="id" type="hidden" th:field="*{id}"/>
 
             <div class="form-group col-md-4" th:if="${status == 1}">
                 <label for="dataDevolucao">Data da devolução:</label>
@@ -71,9 +70,9 @@
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataDevolucao')}" th:errors="*{dataDevolucao}"></div>
                 <input type="hidden" th:field="*{livro.id}"/>
                 <input type="hidden" th:field="*{dataAluguel}"/>
+                <input type="hidden" th:field="*{dataDevolucao}"/>
                 <input type="hidden" th:field="*{prevDataDevolucao}"/>
             </div>
-
             <input type="hidden" th:field="*{livro.id}"/>
         </div>
         <!--Devolver Livro-->
