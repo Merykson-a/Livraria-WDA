@@ -51,8 +51,6 @@
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}"></div>
             </div>
 
-            <input id="id" type="hidden" th:field="*{id}"/>
-
             <div class="form-group col-md-4">
                 <label for="dataAluguel">Data do aluguel:</label>
                 <input th:disabled="${status == 1}" required="on" class="form-control" id="dataAluguel" type="date" th:field="*{dataAluguel}"/>
@@ -64,17 +62,17 @@
                 <input th:disabled="${status == 1}" class="form-control" id="prevDataDevolucao" type="date" th:field="*{prevDataDevolucao}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('prevDataDevolucao')}" th:errors="*{prevDataDevolucao}"></div>
             </div>
-            <span th:if="${status == 1}">
-            <div class="form-group col-md-4">
+
+            <div class="form-group col-md-4" th:if="${status == 1}">
                 <label for="dataDevolucao">Data da devolução:</label>
                 <input required class="form-control" id="dataDevolucao" type="date" th:field="*{dataDevolucao}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataDevolucao')}" th:errors="*{dataDevolucao}"></div>
-            </div>
                 <input type="hidden" th:field="*{livro.id}"/>
                 <input type="hidden" th:field="*{dataAluguel}"/>
                 <input type="hidden" th:field="*{dataDevolucao}"/>
                 <input type="hidden" th:field="*{prevDataDevolucao}"/>
-            </span>
+            </div>
+
             <input type="hidden" th:field="*{livro.id}"/>
         </div>
         <!--Devolver Livro-->
