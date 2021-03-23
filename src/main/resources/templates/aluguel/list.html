@@ -106,7 +106,10 @@
                 <td th:text="${#dates.format(aluguel.prevDataDevolucao, 'dd/MM/yyyy')}">Previsão da devolução</td>
                 <td th:if="${aluguel.dataDevolucao} == null"><a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/devolver(
                       usuarioId=${usuarioId},aluguelId=${aluguel.id})}">Devolver</a></td>
-                <td th:if="${aluguel.dataDevolucao} != null" th:text="${#dates.format(aluguel.dataDevolucao, 'dd/MM/yyyy')}"></td>
+                <div th:if="${aluguel.dataDevolucao} != null" >
+                <td th:text="${#dates.format(aluguel.dataDevolucao, 'dd/MM/yyyy')}"></td>
+                    <td th:if="${aluguel.dataDevolucao} > ${aluguel.prevDataDevolucao}">Livro entregue em atraso</td>
+                </div>
                 <td>
                     <a class="btn btn-sm btn-info" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/atualizar(
                       usuarioId=${usuarioId},aluguelId=${aluguel.id})}" th:if="${aluguel.dataDevolucao} == null">Editar</a>
