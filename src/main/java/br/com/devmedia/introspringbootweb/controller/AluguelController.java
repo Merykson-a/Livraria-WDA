@@ -49,7 +49,7 @@ public class AluguelController {
         Page<Aluguel> page = aluguelService.findPaginated(usuarioId, pesquisa, pageNo, pageSize, sortField, sortDir);
         List<Aluguel> listAlugueis = page.getContent();
 
-        Date dataAgora = new Date();
+        LocalDateTime dataAgora = LocalDateTime.now();
 
         SimpleDateFormat formato = new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss");
