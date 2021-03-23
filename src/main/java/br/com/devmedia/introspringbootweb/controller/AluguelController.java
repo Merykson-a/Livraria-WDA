@@ -112,7 +112,6 @@ public class AluguelController {
     public ModelAndView atualizar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
-        System.out.println(aluguel.getLivro().getId());
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Não esqueça de selecionar o livro!");
             return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/" + aluguel.getId() + "/atualizar");
