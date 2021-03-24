@@ -88,7 +88,7 @@ public class AluguelController {
 
             if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
                 attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
-                return "aluguel/add";
+                return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
             } else {
                 if (result.hasErrors()) {
                     return "aluguel/add";
@@ -118,13 +118,18 @@ public class AluguelController {
             attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
             return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/"+ aluguel.getId() + "/atualizar");
         } else {
+            if(aluguel.getDataDevolucao() != null && aluguel.getDataDevolucao().before(aluguel.getDataAluguel())){
+                attr.addFlashAttribute("mensagemerro", "A data de devolução não pode ser antes da data de aluguel!");
+                return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/"+ aluguel.getId() + "/devolver");
+            }
+            else{
             if (result.hasErrors()) {
                 return new ModelAndView("aluguel/add");
             }
             aluguelService.atualizar(aluguel, usuarioId);
             attr.addFlashAttribute("mensagem", "Aluguel atualizado com sucesso.");
             return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/listar");
-        }
+        }}
     }
 
 
