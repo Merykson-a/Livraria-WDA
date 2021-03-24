@@ -40,7 +40,7 @@
                 <select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:disabled="${aluguel.id != 0}">
                     <option value="0" selected>Selecione o livro</option>
                     <option value="0" th:if="${#lists.isEmpty(livros)}" selected>Não há livros cadastrados</option>
-                    <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
+                    <option id="livro" th:value="${livro.id}" th:each="livro : ${livros}"
                             th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
                 </select>
                 <!--<select class="custom-select mr-sm-2" th:field="*{livro.id}" required th:if="${aluguel.id == 0}">
@@ -49,26 +49,32 @@
                     <option id="livro" th:value ="${livro.id}" th:each="livro : ${livros}"
                             th:text="${livro.nome} + ' - Editora ' +  ${livro.editora.nome}"/>
                 </select>-->
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}"></div>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}"
+                     th:errors="*{livro}"></div>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="dataAluguel">Data do aluguel:</label>
-                <input th:disabled="${status == 1}" required="on" class="form-control" id="dataAluguel" type="date" th:field="*{dataAluguel}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataAluguel')}" th:errors="*{dataAluguel}"></div>
+                <input th:disabled="${status == 1}" required="on" class="form-control" id="dataAluguel" type="date"
+                       th:field="*{dataAluguel}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataAluguel')}"
+                     th:errors="*{dataAluguel}"></div>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="prevDataDevolucao">Data de previsão da devolução:</label>
-                <input th:disabled="${status == 1}" class="form-control" id="prevDataDevolucao" type="date" th:field="*{prevDataDevolucao}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('prevDataDevolucao')}" th:errors="*{prevDataDevolucao}"></div>
+                <input th:disabled="${status == 1}" class="form-control" id="prevDataDevolucao" type="date"
+                       th:field="*{prevDataDevolucao}"/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('prevDataDevolucao')}"
+                     th:errors="*{prevDataDevolucao}"></div>
             </div>
             <input id="id" type="hidden" th:field="*{id}"/>
 
             <div class="form-group col-md-4" th:if="${status == 1}">
                 <label for="dataDevolucao">Data da devolução:</label>
                 <input required class="form-control" id="dataDevolucao" type="date" th:field="*{dataDevolucao}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataDevolucao')}" th:errors="*{dataDevolucao}"></div>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataDevolucao')}"
+                     th:errors="*{dataDevolucao}"></div>
                 <input type="hidden" th:field="*{livro.id}"/>
                 <input type="hidden" th:field="*{dataAluguel}"/>
                 <input type="hidden" th:field="*{dataDevolucao}"/>

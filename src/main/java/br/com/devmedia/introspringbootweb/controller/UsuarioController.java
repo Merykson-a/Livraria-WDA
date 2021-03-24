@@ -23,7 +23,7 @@ public class UsuarioController {
     @GetMapping("/listar")
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("usuarios", usuarioService.recuperar());
-/*      model.addAttribute("livros", usuarioService.recuperarLivro());*/
+        /*      model.addAttribute("livros", usuarioService.recuperarLivro());*/
         return new ModelAndView("usuario/list", model);
     }
 
@@ -48,6 +48,7 @@ public class UsuarioController {
         model.addAttribute("usuario", usuario);
         return new ModelAndView("usuario/add", model);
     }
+
     @PutMapping("/salvar")
     public ModelAndView atualizar(@Validated @ModelAttribute("usuario") Usuario usuario, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
@@ -58,22 +59,21 @@ public class UsuarioController {
         attr.addFlashAttribute("mensagem", "Usuario atualizado com sucesso.");
         return new ModelAndView("redirect:/usuarios/listar");
     }
+
     @GetMapping("/{id}/remover")
     public String remover(@PathVariable("id") long id, RedirectAttributes attr) {
 
         List alugueis = usuarioService.recuperarAluguel(id);
-        if(alugueis != null && !alugueis.isEmpty()) {
+        if (alugueis != null && !alugueis.isEmpty()) {
             attr.addFlashAttribute("mensagemerro", "Não foi possível excluir esse usuário, verifique se não há alugueis desse usuário :).");
             return "redirect:/usuarios/listar";
-        }
-        else{
+        } else {
             usuarioService.excluir(id);
             attr.addFlashAttribute("mensagem", "Usuário excluído com sucesso.");
             return "redirect:/usuarios/listar";
         }
 
     }
-
 
 
 }

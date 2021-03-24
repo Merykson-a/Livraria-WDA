@@ -60,7 +60,7 @@ public class LivroController {
     @GetMapping("/{livroId}/atualizar")
     public ModelAndView preAtualizar(@PathVariable("editoraId") long editoraId, @PathVariable("livroId")
             long livroId, ModelMap model) {
-       Livro livro = livroService.recuperarPorEditoraIdELivroId(editoraId, livroId);
+        Livro livro = livroService.recuperarPorEditoraIdELivroId(editoraId, livroId);
         model.addAttribute("livro", livro);
         model.addAttribute("editoraId", editoraId);
         return new ModelAndView("livro/add", model);
@@ -73,12 +73,11 @@ public class LivroController {
             return new ModelAndView("livro/add");
         }
         Livro teste = livroService.recuperarPorId(livro.getId());
-        if(teste.getAlugados() <= livro.getQuantidade()) {
+        if (teste.getAlugados() <= livro.getQuantidade()) {
             livroService.atualizar(livro, editoraId);
             attr.addFlashAttribute("mensagem", "Livro atualizado com sucesso.");
             return new ModelAndView("redirect:/editoras/" + editoraId + "/livros/listar");
-        }
-        else{
+        } else {
             attr.addFlashAttribute("mensagemerro", "A quantidade não pode ser menor do que a quantidade de livros alugados.");
             return new ModelAndView("redirect:/editoras/" + editoraId + "/livros/" + livro.getId() + "/atualizar");
         }
@@ -88,11 +87,10 @@ public class LivroController {
     public String remover(@PathVariable("editoraId") long editoraId, @PathVariable("livroId")
             long livroId, RedirectAttributes attr) {
         List alugueis = livroService.recuperarAluguel(livroId);
-        if(alugueis != null && !alugueis.isEmpty()) {
+        if (alugueis != null && !alugueis.isEmpty()) {
             attr.addFlashAttribute("mensagemerro", "Não foi possível excluir esse livro, verifique se não há alugueis cadastrados :).");
             return "redirect:/editoras/" + editoraId + "/livros/listar";
-        }
-        else {
+        } else {
             livroService.excluir(editoraId, livroId);
             attr.addFlashAttribute("mensagem", "Livro excluído com sucesso.");
             return "redirect:/editoras/" + editoraId + "/livros/listar";

@@ -49,7 +49,7 @@ public class LivroDaoImpl implements LivroDao {
         return em.createQuery("select m from Editora m where m.id = :editoraId", Editora.class)
                 .setParameter("editoraId", editoraId)
                 .getSingleResult();
-        }
+    }
 
     @Override
     public List<Aluguel> recuperarAluguel(long livroId) {

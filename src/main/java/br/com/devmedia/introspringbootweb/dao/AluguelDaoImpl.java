@@ -73,10 +73,10 @@ public class AluguelDaoImpl implements AluguelDao {
 
     @Override
     public void atualizar(Aluguel aluguel) {
-        if(aluguel.getDataDevolucao() != null){
+        if (aluguel.getDataDevolucao() != null) {
             Livro livro = livroService.recuperarPorId(aluguel.getLivro().getId());
             livro.setAlugados(livro.getAlugados() - 1);
-            livroService.atualizar(livro,livro.getEditora().getId());
+            livroService.atualizar(livro, livro.getEditora().getId());
         }
         em.merge(aluguel);
     }
@@ -84,7 +84,7 @@ public class AluguelDaoImpl implements AluguelDao {
     @Override
     public void excluir(long aluguelId, Date dataDevolucao, long livroId) {
 
-        if(dataDevolucao == null) {
+        if (dataDevolucao == null) {
             Livro livro = livroService.recuperarPorId(livroId);
             livro.setAlugados(livro.getAlugados() - 1);
             livroService.atualizar(livro, livro.getEditora().getId());

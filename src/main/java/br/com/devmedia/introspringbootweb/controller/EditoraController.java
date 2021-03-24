@@ -72,13 +72,12 @@ public class EditoraController {
     }
 
     @GetMapping("/{id}/remover")
-    public String remover(@PathVariable("id") long id , RedirectAttributes attr) {
+    public String remover(@PathVariable("id") long id, RedirectAttributes attr) {
         List livros = editoraService.recuperarLivro(id);
-        if(livros != null && !livros.isEmpty()) {
+        if (livros != null && !livros.isEmpty()) {
             attr.addFlashAttribute("mensagemerro", "Não foi possível excluir essa editora, verifique se não há livros cadastrados :).");
             return "redirect:/editoras/listar";
-        }
-        else{
+        } else {
             editoraService.excluir(id);
             attr.addFlashAttribute("mensagem", "Editora excluída com sucesso.");
             return "redirect:/editoras/listar";
@@ -121,10 +120,10 @@ public class EditoraController {
                                       @RequestParam("sortField") String sortField,
                                       @RequestParam("sortDir") String sortDir,
                                       @RequestParam("pesquisa") String pesquisa,
-                                Model model) {
+                                      Model model) {
 
         Page<Editora> page = editoraService.pesquisarEditora(pageNo, pageSize, sortField, sortDir, pesquisa);
-        List<Editora> listEditoras =  page.getContent();
+        List<Editora> listEditoras = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("pageSize", pageSize);

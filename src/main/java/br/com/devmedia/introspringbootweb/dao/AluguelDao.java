@@ -8,15 +8,22 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-public interface AluguelDao{
+public interface AluguelDao {
 
     void salvar(Aluguel aluguel);
+
     List<Aluguel> recuperarPorUsuario(long usuarioId);
+
     Aluguel recuperarPorUsuarioEAluguelId(long usuarioId, long aluguelId);
+
     Usuario recuperarPorIdUsuario(long usuarioId);
+
     List<Livro> recuperarLivro();
+
     List<Livro> recuperarLivroList();
+
     void atualizar(Aluguel aluguel);
-    void excluir(long aluguelId, Date dataDevolucao, long livroId );
+
+    void excluir(long aluguelId, Date dataDevolucao, long livroId);
 
 }
