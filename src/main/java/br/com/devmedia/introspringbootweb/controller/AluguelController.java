@@ -81,7 +81,7 @@ public class AluguelController {
 
     @PostMapping("/salvar")
     public String salvar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
-            Aluguel aluguel, int contador, BindingResult result, RedirectAttributes attr) {
+            Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
@@ -96,7 +96,6 @@ public class AluguelController {
                     return "aluguel/add";
                 } else {
                     aluguelService.salvar(aluguel, usuarioId);
-                    contador = 0;
                     attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
                     return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
                 }
