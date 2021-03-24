@@ -115,7 +115,7 @@ public class AluguelController {
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
         if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
-            attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
+            attr.addFlashAttribute("message", "A data de previsão da devolução não pode ser antes da data de aluguel!");
             return new ModelAndView("aluguel/add");
         } else {
             if (result.hasErrors()) {
