@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -91,7 +87,7 @@ public class AluguelController {
         } else {
 
             if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
-                attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel");
+                attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
                 return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
             } else {
                 if (result.hasErrors()) {
@@ -115,12 +111,12 @@ public class AluguelController {
     }
 
     @PutMapping("/salvar")
-    public ModelAndView atualizar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
+    public Object atualizar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
-        if (aluguel.getLivro().getId() == 0) {
-            attr.addFlashAttribute("mensagemerro", "Não esqueça de selecionar o livro!");
-            return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/" + aluguel.getId() + "/atualizar");
+        if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
+            attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
+            return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
         } else {
             if (result.hasErrors()) {
                 return new ModelAndView("aluguel/add");
