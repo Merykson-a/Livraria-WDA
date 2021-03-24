@@ -87,14 +87,20 @@ public class AluguelController {
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
-            return "aluguel/add";
+            return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
         } else {
-            if (result.hasErrors()) {
+
+            if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
+                attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel");
                 return "aluguel/add";
+            } else {
+                if (result.hasErrors()) {
+                    return "aluguel/add";
+                }
+                aluguelService.salvar(aluguel, usuarioId);
+                attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
+                return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
             }
-            aluguelService.salvar(aluguel, usuarioId);
-            attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
-            return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
         }
     }
 
