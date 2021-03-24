@@ -87,7 +87,7 @@ public class AluguelController {
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
-            return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
+            return "aluguel/add";
         } else {
             if (result.hasErrors()) {
                 return "aluguel/add";
