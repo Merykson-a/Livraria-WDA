@@ -95,16 +95,17 @@ public class AluguelController {
                     return "aluguel/add";
                 }
                 else{
-                /*if(livroService.recuperarPorId(livroId).getQuantidade() == 2) {
-                    attr.addFlashAttribute("mensagemerro", "Não foi possível alugar, pois o estoque desse livro esgotou.");
-                }*/
 
+                if(livroService.recuperarPorId(aluguel.getLivro().getId()) == null){
+                    attr.addFlashAttribute("mensagemerro", "Teste!");
+                }
+                else{
                 aluguelService.salvar(aluguel, usuarioId);
                 attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
                 }
                     return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
                 }
-        }
+        }}
     }
 
     @GetMapping("/{aluguelId}/atualizar")
