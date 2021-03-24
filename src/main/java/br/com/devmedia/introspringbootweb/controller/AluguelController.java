@@ -81,31 +81,35 @@ public class AluguelController {
 
     @PostMapping("/salvar")
     public String salvar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
-            Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
-        if (aluguel.getLivro().getId() == 0) {
-            attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
-            return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
-        } else {
+            Aluguel aluguel, int contador, BindingResult result, RedirectAttributes attr) {
 
-            if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
-                attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
+        if(contador == 0){
+            attr.addFlashAttribute("mensagem", "Repita o processo para fazer novos alugueis!");
+            return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
+       }
+        else{
+            if (aluguel.getLivro().getId() == 0) {
+                attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
                 return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
             } else {
-                if (result.hasErrors()) {
-                    return "aluguel/add";
-                }
-                else{
 
-                if(livroService.recuperarPorId(aluguel.getLivro().getId()) == null){
-                    attr.addFlashAttribute("mensagemerro", "Teste!");
+                if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
+                    attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
+                    return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
+                } else {
+                    if (result.hasErrors()) {
+                        return "aluguel/add";
+                    }
+                    else{
+                        aluguelService.salvar(aluguel, usuarioId);
+                        contador = 0;
+                        attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
+                        return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
+                    }
+
                 }
-                else{
-                aluguelService.salvar(aluguel, usuarioId);
-                attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
-                }
-                    return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
-                }
-        }}
+            }
+        }
     }
 
     @GetMapping("/{aluguelId}/atualizar")
