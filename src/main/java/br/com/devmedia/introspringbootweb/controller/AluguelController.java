@@ -95,8 +95,8 @@ public class AluguelController {
                     return "aluguel/add";
                 }
                 else{
-
-                if(livroService.recuperarPorId(aluguel.getLivro().getId()).getQuantidade() == 2) {
+                    long livroId = aluguel.getLivro().getId();
+                if(livroService.recuperarPorId(livroId).getQuantidade() == 2) {
                     attr.addFlashAttribute("mensagemerro", "Não foi possível alugar, pois o estoque desse livro esgotou.");
                 }
                 else{
