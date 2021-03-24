@@ -95,15 +95,16 @@ public class AluguelController {
                     return "aluguel/add";
                 }
                 else{
-                if (livroService.recuperarPorId(aluguel.getLivro().getId()).getQuantidade() <= livroService.recuperarPorId(aluguel.getLivro().getId()).getAlugados()) {
+
+                if(livroService.recuperarPorId(aluguel.getLivro().getId()).getQuantidade() == 2) {
                     attr.addFlashAttribute("mensagemerro", "Não foi possível alugar, pois o estoque desse livro esgotou.");
-                    return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
                 }
                 else{
                 aluguelService.salvar(aluguel, usuarioId);
                 attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
-                return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
-            }}}
+                }
+                    return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
+                }}
         }
     }
 
