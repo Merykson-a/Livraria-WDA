@@ -88,7 +88,7 @@ public class AluguelController {
 
             if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
                 attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
-                return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
+                return "aluguel/add";
             } else {
                 if (result.hasErrors()) {
                     return "aluguel/add";
