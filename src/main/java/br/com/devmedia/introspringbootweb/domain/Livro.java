@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -18,10 +19,12 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false, length = 50)
     @NotBlank(message = "O nome não pode ser vazio")
     private String nome;
 
+    @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false, length = 50)
     @NotBlank(message = "O autor não pode ser vazio")
     private String autor;

@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -17,17 +18,21 @@ public class Usuario{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false, length = 60)
     @NotBlank(message = "O campo nome não pode ser vazio!")
     private String nome;
 
+    @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false)
     @NotBlank(message = "O campo endereço não pode ser vazio!")
     private String endereco;
 
+    @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false)
     @NotBlank(message = "O campo cidade não pode ser vazio!")
     private String cidade;
+
 
     @NotBlank(message = "O campo email não pode ser vazio!")
     @Column(nullable = false)

@@ -19,6 +19,7 @@ public class Editora {
     @NotBlank(message = "O campo nome não pode ser vazio")
     private String nome;
 
+    @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false)
     @NotBlank(message = "O campo cidade não pode ser vazio")
     private String cidade;
