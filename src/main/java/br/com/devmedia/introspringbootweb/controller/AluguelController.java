@@ -24,6 +24,7 @@ public class AluguelController {
 
     @Autowired
     private AluguelService aluguelService;
+    private LivroService livroService;
 
     @GetMapping("/listar")
     public String listar(@PathVariable("usuarioId") long usuarioId, Model model) {
@@ -93,10 +94,16 @@ public class AluguelController {
                 if (result.hasErrors()) {
                     return "aluguel/add";
                 }
+                else{
+                if (livroService.recuperarPorId(aluguel.getLivro().getId()).getQuantidade() <= livroService.recuperarPorId(aluguel.getLivro().getId()).getAlugados()) {
+                    attr.addFlashAttribute("mensagemerro", "Não foi possível alugar, pois o estoque desse livro esgotou.");
+                    return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
+                }
+                else{
                 aluguelService.salvar(aluguel, usuarioId);
                 attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
                 return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
-            }
+            }}}
         }
     }
 
