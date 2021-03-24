@@ -83,34 +83,27 @@ public class AluguelController {
     public String salvar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
             Aluguel aluguel, int contador, BindingResult result, RedirectAttributes attr) {
 
-        if(contador == 0){
-            attr.addFlashAttribute("mensagem", "Repita o processo para fazer novos alugueis!");
-            return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
-       }
-        else{
-            if (aluguel.getLivro().getId() == 0) {
-                attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
+        if (aluguel.getLivro().getId() == 0) {
+            attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
+            return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
+        } else {
+
+            if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
+                attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
                 return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
             } else {
-
-                if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
-                    attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
-                    return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
+                if (result.hasErrors()) {
+                    return "aluguel/add";
                 } else {
-                    if (result.hasErrors()) {
-                        return "aluguel/add";
-                    }
-                    else{
-                        aluguelService.salvar(aluguel, usuarioId);
-                        contador = 0;
-                        attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
-                        return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
-                    }
-
+                    aluguelService.salvar(aluguel, usuarioId);
+                    contador = 0;
+                    attr.addFlashAttribute("mensagem", "Aluguel salvo com sucesso.");
+                    return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
                 }
             }
         }
     }
+
 
     @GetMapping("/{aluguelId}/atualizar")
     public ModelAndView preAtualizar(@PathVariable("usuarioId") long usuarioId, @PathVariable("aluguelId")
@@ -128,20 +121,20 @@ public class AluguelController {
 
         if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
             attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
-            return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/"+ aluguel.getId() + "/atualizar");
+            return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/" + aluguel.getId() + "/atualizar");
         } else {
-            if(aluguel.getDataDevolucao() != null && aluguel.getDataDevolucao().before(aluguel.getDataAluguel())){
+            if (aluguel.getDataDevolucao() != null && aluguel.getDataDevolucao().before(aluguel.getDataAluguel())) {
                 attr.addFlashAttribute("mensagemerro", "A data de devolução não pode ser antes da data de aluguel!");
-                return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/"+ aluguel.getId() + "/devolver");
+                return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/" + aluguel.getId() + "/devolver");
+            } else {
+                if (result.hasErrors()) {
+                    return new ModelAndView("aluguel/add");
+                }
+                aluguelService.atualizar(aluguel, usuarioId);
+                attr.addFlashAttribute("mensagem", "Aluguel atualizado com sucesso.");
+                return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/listar");
             }
-            else{
-            if (result.hasErrors()) {
-                return new ModelAndView("aluguel/add");
-            }
-            aluguelService.atualizar(aluguel, usuarioId);
-            attr.addFlashAttribute("mensagem", "Aluguel atualizado com sucesso.");
-            return new ModelAndView("redirect:/usuarios/" + usuarioId + "/alugueis/listar");
-        }}
+        }
     }
 
 
