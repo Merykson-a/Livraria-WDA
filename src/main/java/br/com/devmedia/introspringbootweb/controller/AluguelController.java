@@ -87,7 +87,7 @@ public class AluguelController {
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
         long livroId = (aluguel.getLivro()).getId();
-        Livro livro = livroService.recuperarPorId(2);
+        Livro livro = livroService.recuperarPorId(livroId);
 
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
