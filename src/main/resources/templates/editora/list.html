@@ -5,7 +5,7 @@
     <title>Editoras</title>
     <link rel="icon"
           type="image/svg"
-          href="https://www.flaticon.com/premium-icon/icons/svg/3940/3940130.svg" />
+          href="https://www.flaticon.com/premium-icon/icons/svg/3940/3940130.svg"/>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
 
@@ -25,6 +25,7 @@
          text-decoration:underline;
          cursor:pointer;
     }
+
     </style>
 
 </head>
@@ -39,7 +40,9 @@
     <div class="btn-toolbar justify-content-between" role="toolbar">
 
         <div class="btn-group mr-2" role="group">
-            <a th:href="@{/editoras/cadastro}"><button type="button" class="btn btn-primary">Nova Editora</button></a>
+            <a th:href="@{/editoras/cadastro}">
+                <button type="button" class="btn btn-primary">Nova Editora</button>
+            </a>
         </div>
 
         <div class="input-group">
@@ -47,23 +50,40 @@
                 <div class="input-group-text" id="btnGroupAddon2"><i class="fas fa-search"></i></div>
             </div>
             <form th:action="@{/editoras/listar/search}" method="post">
-                <input name="pesquisa" type="text" class="form-control" placeholder="Digite para pesquisar" aria-describedby="btnGroupAddon2">
+                <input name="pesquisa" type="text" class="form-control" placeholder="Digite para pesquisar"
+                       aria-describedby="btnGroupAddon2">
                 <input type="hidden" th:value="${sortField}" name="sortField">
                 <input type="hidden" th:value="${sortDir}" name="sortDir">
             </form>
         </div>
 
         <div class="btn-group mr-2" role="group" th:if="${status == 0}">
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + 5 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button></a>
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + 10 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button></a>
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + 15 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button></a>
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 5 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button>
+            </a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 10 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button>
+            </a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 15 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button>
+            </a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button>
+            </a>
         </div>
         <div class="btn-group mr-2" role="group" th:if="${status == 1}">
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + 5 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button></a>
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + 10 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button></a>
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + 15 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button></a>
-            <a th:href="@{'/editoras/page/' + ${1} + '/' + ${totalItems} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button></a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 5 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button>
+            </a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 10 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button>
+            </a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + 15 + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button>
+            </a>
+            <a th:href="@{'/editoras/page/' + ${1} + '/' + ${totalItems} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button>
+            </a>
         </div>
     </div>
 
@@ -98,19 +118,43 @@
         <table class="table">
             <thead class="thead-light">
             <div th:if="${status == 0}">
-            <tr class="text-center">
-                <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id<i class="fa fa-fw" th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=nome&sortDir=' + ${reverseSortDir}}">Nome<i class="fa fa-fw" th:classappend="${sortField} == nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=cidade&sortDir=' + ${reverseSortDir}}">Cidade<i class="fa fa-fw" th:classappend="${sortField} == cidade ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th>Ações</th>
+                <tr class="text-center">
+                    <th>
+                        <a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id<i
+                                class="fa fa-fw"
+                                th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=nome&sortDir=' + ${reverseSortDir}}">Nome<i
+                                class="fa fa-fw"
+                                th:classappend="${sortField} == nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=cidade&sortDir=' + ${reverseSortDir}}">Cidade<i
+                                class="fa fa-fw"
+                                th:classappend="${sortField} == cidade ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                    </th>
+                    <th>Ações</th>
 
-            </tr>
+                </tr>
             </div>
             <div th:if="${status == 1}">
                 <tr class="text-center">
-                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i class="fa fa-fw" th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome<i class="fa fa-fw" th:classappend="${sortField} == nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                    <th><a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=cidade&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Cidade<i class="fa fa-fw" th:classappend="${sortField} == cidade ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
+                    <th>
+                        <a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i
+                                class="fa fa-fw"
+                                th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Nome<i
+                                class="fa fa-fw"
+                                th:classappend="${sortField} == nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/editoras/page/' + ${currentPage} + '/' + ${pageSize} + '/search' + '?sortField=cidade&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Cidade<i
+                                class="fa fa-fw"
+                                th:classappend="${sortField} == cidade ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                    </th>
                     <th>Ações</th>
 
 
@@ -119,14 +163,15 @@
             </thead>
             <tr th:each="editora : ${editoras}" class="text-center">
                 <td th:text="${editora.id}">Id</td>
-                <td >
+                <td>
                     <a th:text="${editora.nome}">Nome</a>
                 </td>
                 <td th:text="${editora.cidade}">Cidade</td>
                 <td>
                     <a class="btn btn-sm btn-info" th:href="@{/editoras/{id}/atualizar(id=${editora.id})}">Editar</a>
                     <a class="btn btn-sm btn-danger" th:href="@{/editoras/{id}/remover(id=${editora.id})}">Excluir</a>
-                    <a class="btn btn-sm btn-dark" th:href="@{/editoras/{id}/livros/listar(id=${editora.id})}">Ver livros cadastrados</a>
+                    <a class="btn btn-sm btn-dark" th:href="@{/editoras/{id}/livros/listar(id=${editora.id})}">Ver
+                        livros cadastrados</a>
                 </td>
             </tr>
         </table>
@@ -136,7 +181,8 @@
         <nav th:if="${totalPages > 1}">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/editoras/page/' + ${currentPage - 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Anterior</a>
+                    <a class="page-link" th:if="${currentPage > 1}"
+                       th:href="@{'/editoras/page/' + ${currentPage - 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Anterior</a>
                 </li>
 
                 <li class="page-item disabled">
@@ -145,7 +191,8 @@
 
                 <span th:each="i: ${#numbers.sequence(1, totalPages)}">
             <li class="page-item">
-                <a class="page-link" th:if="${currentPage != i}" th:href="@{'/editoras/page/' + ${i} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                <a class="page-link" th:if="${currentPage != i}"
+                   th:href="@{'/editoras/page/' + ${i} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
             </li>
 
                <li class="page-item disabled">
@@ -154,13 +201,15 @@
             </span>
 
                 <li class="page-item">
-                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${currentPage + 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Próxima</a>
+                    <a class="page-link" th:if="${currentPage < totalPages}"
+                       th:href="@{'/editoras/page/' + ${currentPage + 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Próxima</a>
                 </li>
                 <li class="page-item disabled">
                     <span class="page-link" th:unless="${currentPage < totalPages}">Próxima</span>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${totalPages} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Última</a>
+                    <a class="page-link" th:if="${currentPage < totalPages}"
+                       th:href="@{'/editoras/page/' + ${totalPages} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Última</a>
                 </li>
                 <li class="page-item disabled">
                     <span class="page-link" th:unless="${currentPage < totalPages}">Última</span></a>
@@ -172,7 +221,8 @@
         <nav th:if="${totalPages > 1}">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/editoras/page/' + ${currentPage - 1} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Anterior</a>
+                    <a class="page-link" th:if="${currentPage > 1}"
+                       th:href="@{'/editoras/page/' + ${currentPage - 1} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Anterior</a>
                 </li>
 
                 <li class="page-item disabled">
@@ -181,7 +231,8 @@
 
                 <span th:each="i: ${#numbers.sequence(1, totalPages)}">
             <li class="page-item">
-                <a class="page-link" th:if="${currentPage != i}" th:href="@{'/editoras/page/' + ${i} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">[[${i}]]</a>
+                <a class="page-link" th:if="${currentPage != i}"
+                   th:href="@{'/editoras/page/' + ${i} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">[[${i}]]</a>
             </li>
 
                <li class="page-item disabled">
@@ -190,13 +241,15 @@
             </span>
 
                 <li class="page-item">
-                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${currentPage + 1} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Próxima</a>
+                    <a class="page-link" th:if="${currentPage < totalPages}"
+                       th:href="@{'/editoras/page/' + ${currentPage + 1} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Próxima</a>
                 </li>
                 <li class="page-item disabled">
                     <span class="page-link" th:unless="${currentPage < totalPages}">Próxima</span>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/editoras/page/' + ${totalPages} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Última</a>
+                    <a class="page-link" th:if="${currentPage < totalPages}"
+                       th:href="@{'/editoras/page/' + ${totalPages} + '/' + ${pageSize} + '/search' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Última</a>
                 </li>
                 <li class="page-item disabled">
                     <span class="page-link" th:unless="${currentPage < totalPages}">Última</span>
@@ -224,9 +277,6 @@
         <a class="btn btn-light" href="/home">Voltar</a>
     </div>
     <hr/>
-
-
-
 
 
     <footer class="footer">

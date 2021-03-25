@@ -30,7 +30,8 @@
         background-color: #98FB98;
     }
 
-    </style>
+
+</style>
 <body>
 
 <div class="container">
@@ -38,29 +39,38 @@
         <h1>Lista de alugueis</h1>
         <div th:insert="menu/header :: header"></div>
     </div>
-<div class="btn-toolbar justify-content-between" role="toolbar">
-    <div>
-        <a class="btn btn-primary" th:href="@{/usuarios/{usuarioId}/alugueis/cadastro(usuarioId=${usuarioId})}">
-            Novo aluguel</a>
-    </div>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon2"><i class="fas fa-search"></i></div>
+    <div class="btn-toolbar justify-content-between" role="toolbar">
+        <div>
+            <a class="btn btn-primary" th:href="@{/usuarios/{usuarioId}/alugueis/cadastro(usuarioId=${usuarioId})}">
+                Novo aluguel</a>
         </div>
-        <form th:action="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 5}" method="get">
-            <input name="pesquisa" type="text" class="form-control" placeholder="Digite para pesquisar" aria-describedby="btnGroupAddon2">
-            <input type="hidden" th:value="${sortField}" name="sortField">
-            <input type="hidden" th:value="${sortDir}" name="sortDir">
-        </form>
-    </div>
-    <div class="btn-group mr-2" role="group">
-        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 5 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button></a>
-        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 10 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button></a>
-        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 15 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button></a>
-        <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}"><button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button></a>
-    </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text" id="btnGroupAddon2"><i class="fas fa-search"></i></div>
+            </div>
+            <form th:action="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 5}" method="get">
+                <input name="pesquisa" type="text" class="form-control" placeholder="Digite para pesquisar"
+                       aria-describedby="btnGroupAddon2">
+                <input type="hidden" th:value="${sortField}" name="sortField">
+                <input type="hidden" th:value="${sortDir}" name="sortDir">
+            </form>
+        </div>
+        <div class="btn-group mr-2" role="group">
+            <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 5 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 5}">5</button>
+            </a>
+            <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 10 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 10}">10</button>
+            </a>
+            <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + 15 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button>
+            </a>
+            <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button>
+            </a>
+        </div>
 
-</div>
+    </div>
     <hr/>
     <div th:if="${status == 1}">
         <div class="alert alert-light" role="alert">
@@ -70,14 +80,14 @@
 
     <div th:if="${alugueis != null}" class="table-responsive-sm">
         <div th:if="${totalItems == 0}">
-        <h4>
-            Alugueis do usuário ([[${totalItems}]]) ( Pág: [[${totalPages}]]/[[${totalPages}]] )
-        </h4>
+            <h4>
+                Alugueis do usuário ([[${totalItems}]]) ( Pág: [[${totalPages}]]/[[${totalPages}]] )
+            </h4>
         </div>
         <div th:if="${totalItems > 0}">
-        <h4>
-            Alugueis do usuário ([[${totalItems}]]) ( Pág: [[${currentPage}]]/[[${totalPages}]] )
-        </h4>
+            <h4>
+                Alugueis do usuário ([[${totalItems}]]) ( Pág: [[${currentPage}]]/[[${totalPages}]] )
+            </h4>
         </div>
         <div th:if="${mensagem != null}">
             <div class="alert alert-info" role="alert">
@@ -91,17 +101,41 @@
         <table class="table">
             <thead class="thead-light">
             <tr class="text-center">
-                <th><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i class="fa fa-fw" th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=livro.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Livro<i class="fa fa-fw" th:classappend="${sortField} == livro.nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=usuario.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Usuário<i class="fa fa-fw" th:classappend="${sortField} == usuario.nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataAluguel&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data do aluguel<i class="fa fa-fw" th:classappend="${sortField} == dataAluguel ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=prevDataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Previsão da devolução<i class="fa fa-fw" th:classappend="${sortField} == prevDataDevolucao ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
-                <th><a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data da devolução<i class="fa fa-fw" th:classappend="${sortField} == dataDevolucao ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a></th>
+                <th>
+                    <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=id&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Id<i
+                            class="fa fa-fw"
+                            th:classappend="${sortField} == id ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                </th>
+                <th>
+                    <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=livro.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Livro<i
+                            class="fa fa-fw"
+                            th:classappend="${sortField} == livro.nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                </th>
+                <th>
+                    <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=usuario.nome&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Usuário<i
+                            class="fa fa-fw"
+                            th:classappend="${sortField} == usuario.nome ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                </th>
+                <th>
+                    <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataAluguel&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data
+                        do aluguel<i class="fa fa-fw"
+                                     th:classappend="${sortField} == dataAluguel ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                </th>
+                <th>
+                    <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=prevDataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Previsão
+                        da devolução<i class="fa fa-fw"
+                                       th:classappend="${sortField} == prevDataDevolucao ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                </th>
+                <th>
+                    <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage} + '/' + ${pageSize} + '?sortField=dataDevolucao&sortDir=' + ${reverseSortDir} + '&pesquisa=' + ${pesquisa}}">Data
+                        da devolução<i class="fa fa-fw"
+                                       th:classappend="${sortField} == dataDevolucao ? (${sortDir} == asc ? fa-sort-asc : fa-sort-desc) : fa-sort"></i></a>
+                </th>
                 <th>Avisos</th>
                 <th>Ação</th>
             </tr>
             </thead>
-            <div >
+            <div>
 
             </div>
             <tr th:each="aluguel : ${alugueis}" class="text-center">
@@ -113,22 +147,34 @@
                 <td th:text="${#dates.format(aluguel.dataAluguel, 'dd/MM/yyyy')}">Data do aluguel</td>
                 <td th:text="${#dates.format(aluguel.prevDataDevolucao, 'dd/MM/yyyy')}">Previsão da devolução</td>
                 <div th:if="${aluguel.dataDevolucao} == null">
-                <td><a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/devolver(
+                    <td><a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/devolver(
                       usuarioId=${usuarioId},aluguelId=${aluguel.id})}">Devolver</a></td>
-                    <td class="atraso" th:if="${#dates.format(dataAtual, 'yyyy-MM-dd')} > ${#dates.format(aluguel.prevDataDevolucao, 'yyyy-MM-dd')}">Aluguel em atraso</td>
-                    <td class="prazo" th:unless="${#dates.format(dataAtual, 'yyyy-MM-dd')} > ${#dates.format(aluguel.prevDataDevolucao, 'yyyy-MM-dd')}">Aluguel dentro do prazo</td>
-                    </div>
-                <div th:if="${aluguel.dataDevolucao} != null" >
+                    <td class="atraso"
+                        th:if="${#dates.format(dataAtual, 'yyyy-MM-dd')} > ${#dates.format(aluguel.prevDataDevolucao, 'yyyy-MM-dd')}">
+                        Aluguel em atraso
+                    </td>
+                    <td class="prazo"
+                        th:unless="${#dates.format(dataAtual, 'yyyy-MM-dd')} > ${#dates.format(aluguel.prevDataDevolucao, 'yyyy-MM-dd')}">
+                        Aluguel dentro do prazo
+                    </td>
+                </div>
+                <div th:if="${aluguel.dataDevolucao} != null">
                     <td th:text="${#dates.format(aluguel.dataDevolucao, 'dd/MM/yyyy')}"></td>
-                    <td class="atraso" th:if="${aluguel.dataDevolucao} > ${aluguel.prevDataDevolucao}">Livro entregue atrasado</td>
-                    <td class="prazo" th:unless="${aluguel.dataDevolucao} > ${aluguel.prevDataDevolucao}">Livro entregue no prazo</td>
+                    <td class="atraso" th:if="${aluguel.dataDevolucao} > ${aluguel.prevDataDevolucao}">Livro entregue
+                        atrasado
+                    </td>
+                    <td class="prazo" th:unless="${aluguel.dataDevolucao} > ${aluguel.prevDataDevolucao}">Livro entregue
+                        no prazo
+                    </td>
                 </div>
 
                 <td>
                     <a class="btn btn-sm btn-info" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/atualizar(
-                      usuarioId=${usuarioId},aluguelId=${aluguel.id})}" th:if="${aluguel.dataDevolucao} == null">Editar</a>
+                      usuarioId=${usuarioId},aluguelId=${aluguel.id})}"
+                       th:if="${aluguel.dataDevolucao} == null">Editar</a>
                     <a class="btn btn-sm btn-danger" th:href="@{/usuarios/{usuarioId}/alugueis/{aluguelId}/remover/{livroId}(
-                      usuarioId=${usuarioId},aluguelId=${aluguel.id},livroId=${aluguel.livro.id})}" th:if="${aluguel.dataDevolucao} != null">Excluir</a>
+                      usuarioId=${usuarioId},aluguelId=${aluguel.id},livroId=${aluguel.livro.id})}"
+                       th:if="${aluguel.dataDevolucao} != null">Excluir</a>
                 </td>
             </tr>
         </table>
@@ -137,7 +183,8 @@
     <nav th:if="${totalPages > 1}">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage - 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Anterior</a>
+                <a class="page-link" th:if="${currentPage > 1}"
+                   th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage - 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Anterior</a>
             </li>
 
             <li class="page-item disabled">
@@ -146,7 +193,8 @@
 
             <span th:each="i: ${#numbers.sequence(1, totalPages)}">
             <li class="page-item">
-                <a class="page-link" th:if="${currentPage != i}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${i} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">[[${i}]]</a>
+                <a class="page-link" th:if="${currentPage != i}"
+                   th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${i} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">[[${i}]]</a>
             </li>
 
                <li class="page-item disabled">
@@ -155,13 +203,15 @@
             </span>
 
             <li class="page-item">
-                <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage + 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Próxima</a>
+                <a class="page-link" th:if="${currentPage < totalPages}"
+                   th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${currentPage + 1} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Próxima</a>
             </li>
             <li class="page-item disabled">
                 <span class="page-link" th:unless="${currentPage < totalPages}">Próxima</span>
             </li>
             <li class="page-item">
-                <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${totalPages} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Última</a>
+                <a class="page-link" th:if="${currentPage < totalPages}"
+                   th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${totalPages} + '/' + ${pageSize} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">Última</a>
             </li>
             <li class="page-item disabled">
                 <span class="page-link" th:unless="${currentPage < totalPages}">Última</span></a>
@@ -182,10 +232,10 @@
 
     <hr/>
     <div th:if="${status == 0}">
-    <a class="btn btn-light" th:href="@{/usuarios/listar}">Voltar</a>
+        <a class="btn btn-light" th:href="@{/usuarios/listar}">Voltar</a>
     </div>
     <div th:if="${status == 1}">
-    <a class="btn btn-light" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/listar'}">Voltar</a>
+        <a class="btn btn-light" th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/listar'}">Voltar</a>
     </div>
     <hr/>
     <footer class="footer">
