@@ -1,6 +1,7 @@
 package br.com.devmedia.introspringbootweb.controller;
 
 import br.com.devmedia.introspringbootweb.domain.Aluguel;
+import br.com.devmedia.introspringbootweb.domain.Livro;
 import br.com.devmedia.introspringbootweb.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -83,11 +84,18 @@ public class AluguelController {
     public String salvar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
+        Livro livro = livroService.recuperarPorId(aluguel.getLivro().getId());
+
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
             return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
-        } else {
-
+        }
+        else {
+            if(livro.getQuantidade() == livro.getAlugados()){
+                attr.addFlashAttribute("mensagem", "Não foi possível salvar o aluguel, pois o livro não se encontra disponível.");
+                return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
+            }
+            else{
             if (aluguel.getPrevDataDevolucao().before(aluguel.getDataAluguel())) {
                 attr.addFlashAttribute("mensagemerro", "A data de previsão da devolução não pode ser antes da data de aluguel!");
                 return "redirect:/usuarios/" + usuarioId + "/alugueis/cadastro";
@@ -100,7 +108,7 @@ public class AluguelController {
                     return "redirect:/usuarios/" + usuarioId + "/alugueis/listar";
                 }
             }
-        }
+        }}
     }
 
 
