@@ -84,7 +84,8 @@ public class AluguelController {
     public String salvar(@PathVariable("usuarioId") long usuarioId, @Validated @ModelAttribute("aluguel")
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
-        Livro livro = livroService.recuperarPorId(aluguel.getLivro().getId());
+        long livroId = (aluguel.getLivro()).getId();
+        Livro livro = livroService.recuperarPorId(livroId);
 
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
