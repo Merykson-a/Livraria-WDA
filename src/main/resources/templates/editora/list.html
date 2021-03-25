@@ -68,7 +68,7 @@
                 <button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button>
             </a>
             <a th:href="@{'/editoras/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
-                <button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button>
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems or totalItems == 0}">Todos</button>
             </a>
         </div>
         <div class="btn-group mr-2" role="group" th:if="${status == 1}">
