@@ -66,7 +66,7 @@
                 <button type="button" class="btn btn-primary" th:disabled="${pageSize == 15}">15</button>
             </a>
             <a th:href="@{'/usuarios/' + ${usuarioId} + '/alugueis/page/' + ${1} + '/' + ${totalItems} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&pesquisa=' + ${pesquisa}}">
-                <button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems}">Todos</button>
+                <button type="button" class="btn btn-primary" th:disabled="${pageSize == totalItems or totalItems == 0}">Todos</button>
             </a>
         </div>
 
