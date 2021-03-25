@@ -25,6 +25,8 @@ public class AluguelController {
 
     @Autowired
     private AluguelService aluguelService;
+
+    @Autowired
     private LivroService livroService;
 
     @GetMapping("/listar")
@@ -85,7 +87,7 @@ public class AluguelController {
             Aluguel aluguel, BindingResult result, RedirectAttributes attr) {
 
         long livroId = (aluguel.getLivro()).getId();
-        Livro livro = livroService.recuperarPorId(livroId);
+        Livro livro = livroService.recuperarPorId(2);
 
         if (aluguel.getLivro().getId() == 0) {
             attr.addFlashAttribute("mensagemerro", "Por favor selecione algum livro");
