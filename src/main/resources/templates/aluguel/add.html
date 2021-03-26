@@ -63,7 +63,7 @@
 
             <div class="form-group col-md-4">
                 <label for="prevDataDevolucao">Data de previsão da devolução:</label>
-                <input th:disabled="${status == 1}" class="form-control" id="prevDataDevolucao" type="date"
+                <input th:disabled="${status == 1}" required="on" class="form-control" id="prevDataDevolucao" type="date"
                        th:field="*{prevDataDevolucao}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('prevDataDevolucao')}"
                      th:errors="*{prevDataDevolucao}"></div>
