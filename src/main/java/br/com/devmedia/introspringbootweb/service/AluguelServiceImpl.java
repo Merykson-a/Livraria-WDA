@@ -80,7 +80,7 @@ public class AluguelServiceImpl implements AluguelService {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
-        Pageable pageable = PageRequest.of(pageNo -1, pageSize, sort);
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
         return this.aluguelRepository.findById(usuarioId, pesquisa, pageable);
     }
 }

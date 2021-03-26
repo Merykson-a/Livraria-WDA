@@ -32,25 +32,29 @@
             <div class="form-group col-md-4">
                 <label for="nome">Nome:</label>
                 <input class="form-control" id="nome" type="text" th:field="*{nome}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}"
+                     th:errors="*{nome}"></div>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="endereco">Endereço:</label>
                 <input class="form-control" id="endereco" type="text" th:field="*{endereco}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></div>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('endereco')}"
+                     th:errors="*{endereco}"></div>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="cidade">Cidade:</label>
                 <input class="form-control" id="cidade" type="text" th:field="*{cidade}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></div>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('cidade')}"
+                     th:errors="*{cidade}"></div>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="email">Email:</label>
                 <input class="form-control" id="email" type="email" th:field="*{email}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}"
+                     th:errors="*{email}"></div>
             </div>
 
         </div>

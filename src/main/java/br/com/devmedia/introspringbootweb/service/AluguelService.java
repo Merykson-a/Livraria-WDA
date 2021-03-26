@@ -11,12 +11,20 @@ import java.util.List;
 public interface AluguelService {
 
     void salvar(Aluguel aluguel, long usuarioId);
+
     List<Aluguel> recuperarPorUsuario(long usuarioId);
+
     Aluguel recuperarPorUsuarioIdEAluguelId(long usuarioId, long aluguelId);
+
     Usuario recuperarPorIdUsuario(long usuarioId);
+
     List<Livro> recuperarLivro();
+
     List<Livro> recuperarLivroList();
+
     void atualizar(Aluguel aluguel, long usuarioId);
+
     void excluir(long usuarioId, long aluguelId, long livroId);
+
     Page<Aluguel> findPaginated(long usuarioId, String pesquisa, int pageNo, int pageSize, String sortField, String sortDirection);
 }

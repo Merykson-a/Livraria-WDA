@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @Transactional
 
-public class UsuarioServiceImpl implements UsuarioService{
+public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioDao usuarioDao;
@@ -28,11 +28,6 @@ public class UsuarioServiceImpl implements UsuarioService{
     public List<Usuario> recuperar() {
         return usuarioDao.recuperar();
     }
-
-/*  @Override
-    public List<Livro> recuperarLivro() {
-    return usuarioDao.recuperarLivro();
-    }*/
 
     @Override
     @Transactional

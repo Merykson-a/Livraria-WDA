@@ -82,43 +82,7 @@
             </div>
             <input type="hidden" th:field="*{livro.id}"/>
         </div>
-        <!--Devolver Livro-->
-        <!--<div class="row" th:if="${status == 1}">
 
-            <div class="form-group col-md-4">
-                <label for="livro">Nome do livro:</label
-                <select class="form-control" th:field="*{livro.id}" required th:if="${aluguel.id != 0}" disabled="disabled">
-                    <option id="livro" th:value ="${livro.id}" th:each="aluguel : ${alugueis}"
-                            th:text="${aluguel.livro.nome}" selected/>
-                </select>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}"></div>
-            </div>
-
-            <input id="id" type="hidden" th:field="*{id}"/>
-
-            <div class="form-group col-md-4">
-                <label for="dataAluguel">Data do aluguel:</label>
-                <input disabled="disabled" required="on" class="form-control" id="dataAluguel" type="date" th:field="*{dataAluguel}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataAluguel')}" th:errors="*{dataAluguel}"></div>
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="prevDataDevolucao">Data de previsão da devolução:</label>
-                <input disabled="disabled" class="form-control" id="prevDataDevolucao" type="date" th:field="*{prevDataDevolucao}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('prevDataDevolucao')}" th:errors="*{prevDataDevolucao}"></div>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="dataDevolucao">Data da devolução:</label>
-                <input required class="form-control" id="dataDevolucao" type="date" th:field="*{dataDevolucao}"/>
-                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataDevolucao')}" th:errors="*{dataDevolucao}"></div>
-            </div>
-
-            <input type="hidden" th:field="*{livro.id}"/>
-            <input type="hidden" th:field="*{dataAluguel}"/>
-            <input type="hidden" th:field="*{dataDevolucao}"/>
-            <input type="hidden" th:field="*{prevDataDevolucao}"/>
-
-        </div>-->
         <div class="form-group">
             <button class="btn btn-primary" type="submit">Salvar</button>
         </div>

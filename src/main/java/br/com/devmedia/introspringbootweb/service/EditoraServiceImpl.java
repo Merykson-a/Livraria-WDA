@@ -20,7 +20,6 @@ import java.util.List;
 public class EditoraServiceImpl implements EditoraService {
 
 
-
     @Autowired
     private EditoraRepository editoraRepository;
 
@@ -65,7 +64,7 @@ public class EditoraServiceImpl implements EditoraService {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
-        Pageable pageable = PageRequest.of(pageNo -1, pageSize, sort);
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
         return this.editoraRepository.findAll(pageable);
     }
 
@@ -74,7 +73,7 @@ public class EditoraServiceImpl implements EditoraService {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
-        Pageable pageable = PageRequest.of(pageNo -1, pageSize, sort);
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
         return this.editoraRepository.findByTodos(pesquisa, pageable);
     }
 }

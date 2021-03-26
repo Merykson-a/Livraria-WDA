@@ -51,7 +51,8 @@
 
             <div class="form-group col-md-4">
                 <label for="lancamento">Ano Lançamento:</label>
-                <input class="form-control" id="lancamento" type="number" min="1900" max="2030" th:field="*{lancamento}"/>
+                <input class="form-control" id="lancamento" type="number" min="1900" max="2030"
+                       th:field="*{lancamento}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('lancamento')}"
                      th:errors="*{lancamento}"></div>
             </div>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <link rel="icon"
           type="image/svg"
-          href="https://www.flaticon.com/svg/vstatic/svg/1459/1459381.svg?token=exp=1613573862~hmac=7fd25dac39a87e4db4449da382a855be" />
+          href="https://www.flaticon.com/svg/vstatic/svg/1459/1459381.svg?token=exp=1613573862~hmac=7fd25dac39a87e4db4449da382a855be"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
@@ -52,8 +52,8 @@
             </tr>
             </thead>
             <tr th:each="usuario : ${usuarios}" class="text-center">
-                <td >
-                    <a th:text="${usuario.nome}" >Nome</a>
+                <td>
+                    <a th:text="${usuario.nome}">Nome</a>
                 </td>
                 <td th:text="${usuario.endereco}">Endereço</td>
                 <td th:text="${usuario.cidade}">Cidade</td>
@@ -61,7 +61,8 @@
                 <td>
                     <a class="btn btn-sm btn-info" th:href="@{/usuarios/{id}/atualizar(id=${usuario.id})}">Editar</a>
                     <a class="btn btn-sm btn-danger" th:href="@{/usuarios/{id}/remover(id=${usuario.id})}">Excluir</a>
-                    <a class="btn btn-sm btn-dark" th:href="@{/usuarios/{id}/alugueis/listar(id=${usuario.id})}">Ver alugueis</a>
+                    <a class="btn btn-sm btn-dark" th:href="@{/usuarios/{id}/alugueis/listar(id=${usuario.id})}">Ver
+                        alugueis</a>
                 </td>
             </tr>
 

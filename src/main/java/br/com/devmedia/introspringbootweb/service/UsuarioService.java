@@ -9,11 +9,15 @@ import java.util.List;
 public interface UsuarioService {
 
     void salvar(Usuario usuario);
+
     List<Usuario> recuperar();
-/*    List<Livro> recuperarLivro();*/
+
     Usuario recuperarPorId(long id);
+
     List<Aluguel> recuperarAluguel(long id);
+
     void atualizar(Usuario usuario);
+
     void excluir(long id);
 
 }

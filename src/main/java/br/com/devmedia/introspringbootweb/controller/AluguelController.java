@@ -17,10 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Date;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("usuarios/{usuarioId}/alugueis")
-
 public class AluguelController {
 
     @Autowired
@@ -31,9 +29,6 @@ public class AluguelController {
 
     @GetMapping("/listar")
     public String listar(@PathVariable("usuarioId") long usuarioId, Model model) {
-        /*model.addAttribute("alugueis", aluguelService.recuperarPorUsuario(usuarioId));
-        model.addAttribute("usuarioId", usuarioId);
-        return new ModelAndView("/aluguel/list", model);*/
         return findPaginated(usuarioId, 1, 5, "id", "asc", "", model);
     }
 

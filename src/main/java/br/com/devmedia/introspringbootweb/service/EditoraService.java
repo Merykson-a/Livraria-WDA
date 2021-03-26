@@ -9,11 +9,18 @@ import java.util.List;
 public interface EditoraService {
 
     void salvar(Editora editora);
+
     List<Editora> recuperar();
+
     Editora recuperarPorId(long id);
+
     List<Livro> recuperarLivro(long id);
+
     void atualizar(Editora editora);
+
     void excluir(long id);
+
     Page<Editora> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
+
     Page<Editora> pesquisarEditora(int pageNo, int pageSize, String sortField, String sortDirection, String pesquisa);
 }
