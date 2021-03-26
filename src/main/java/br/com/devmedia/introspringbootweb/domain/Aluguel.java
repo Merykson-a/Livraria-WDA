@@ -34,7 +34,6 @@ public class Aluguel {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date prevDataDevolucao;
 
-
     @ManyToOne
     private Usuario usuario;
 

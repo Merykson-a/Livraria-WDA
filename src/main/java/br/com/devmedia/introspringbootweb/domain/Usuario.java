@@ -22,6 +22,7 @@ public class Usuario{
     @Column(nullable = false, length = 60)
     @NotBlank(message = "O campo nome não pode ser vazio!")
     @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
+    @Pattern(regexp="[A-Za-z. _%-+]", message = "Insira um email válido, no formato: Email@email.com!")
     private String nome;
 
 
