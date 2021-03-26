@@ -31,7 +31,7 @@
             <input id="id" type="hidden" th:field="*{id}"/>
             <div class="form-group col-md-4">
                 <label for="nome">Nome:</label>
-                <input class="form-control" id="nome" type="text" th:field="*{nome}"/>
+                <input class="form-control" id="nome" type="text" th:field="*{nome}" pattern="[a-zA-Z á-úÀ-Ú]{3}"/>
                 <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}"
                      th:errors="*{nome}"></div>
             </div>
