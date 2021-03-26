@@ -35,7 +35,7 @@ public class Usuario{
     @Column(nullable = false)
     /*@NotBlank(message = "O campo cidade não pode ser vazio!")
     @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
-    @Pattern(regexp="[a-zA-Z á-úÀ-Ú]{3,60}", message = "Insira uma cidade válida, sem caracteres especiais!")
+    @Pattern(regexp="[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira uma cidade válida, sem caracteres especiais!")
     private String cidade;
 
 
