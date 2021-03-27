@@ -2,7 +2,7 @@
 <head>
     <script type="text/javascript"
             src="https://www.google.com/jsapi"></script>
-    <script th:inline="text/javascript">
+    <script th:inline="javascript">
 
       google.load("visualization", "1", {packages:["corechart"]});
 
@@ -10,7 +10,7 @@
 
 	var data = google.visualization.arrayToDataTable([
           ['Linguagem', 'Quando gosto dela'],
-          ['Java',     [[${atrasoP}]]],
+          ['Java', [[${atrasoP}]]],
           ['PHP',      30],
           ['Javascript',  25],
           ['C#', 5],
