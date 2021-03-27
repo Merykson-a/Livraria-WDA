@@ -19,6 +19,6 @@ public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
             " cast(id as text) like %?2%)")
     Page<Aluguel> findById(long usuarioId, String pesquisa, Pageable pageable);
 
-    @Query("select count(m) from Aluguel")
+    @Query("select count(m) from Aluguel m")
     public long teste();
 }
