@@ -9,7 +9,7 @@
       function drawChart() {
 
 	var data = google.visualization.arrayToDataTable([
-          ['Linguagem', 'Quando gosto dela'],
+
           ['Livros entregues atrasados', [[${noA}]]],
           ['Livros entregues no prazo', [[${noP}]]],
           ['Aluguéis em atraso', [[${emA}]]],
@@ -32,7 +32,7 @@
 
 
     </script>
-    <title>Estátistica</title>
+    <title>Estatística</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
@@ -41,11 +41,14 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1>Estátistica</h1>
+        <h1>Estatística</h1>
         <div th:insert="menu/header :: header"></div>
     </div>
     <hr/>
-    <div><div id="chart_div" style="width: 500px; height: 500px;"></div></div>
+    <div>
+        <div id="chart_div"></div>
+        <div>Teste</div>
+    </div>
     <a class="btn btn-light" href="/home">Voltar</a>
     <hr/>
     <footer class="footer">
