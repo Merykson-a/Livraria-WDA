@@ -15,13 +15,13 @@ import java.time.ZoneOffset;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/teste")
+@RequestMapping("/statistic")
 public class HomeController {
 
     @Autowired
     private AluguelRepository aluguelRepository;
 
-    @GetMapping("/listar")
+    @GetMapping("/view")
     public ModelAndView listar(ModelMap model) {
 
         OffsetDateTime dataAgora = OffsetDateTime.now(ZoneOffset.UTC);
