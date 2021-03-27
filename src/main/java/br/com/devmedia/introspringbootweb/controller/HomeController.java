@@ -23,10 +23,10 @@ public class HomeController {
     @GetMapping("/listar")
     public ModelAndView listar(ModelMap model) {
 
-        Date dataAgora = new Date();
+        Date dataAgora = new Date(String.valueOf(ZoneOffset.UTC));
 
         model.addAttribute("variavelteste", aluguelRepository.atrasoE());
-        model.addAttribute("variavelteste2", dataAgora);
+        model.addAttribute("variavel", dataAgora);
         return new ModelAndView("teste/teste", model);
     }
 
