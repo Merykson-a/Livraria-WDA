@@ -14,6 +14,7 @@ public class HomeController {
 
     @GetMapping("/listar")
     public ModelAndView listar(ModelMap model) {
+              model.addAttribute("variavelteste", 1);
         return new ModelAndView("teste/teste", model);
     }
 
