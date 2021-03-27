@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 
@@ -23,7 +24,7 @@ public class HomeController {
     @GetMapping("/listar")
     public ModelAndView listar(ModelMap model) {
 
-        Date dataAgora = new Date(String.valueOf(ZoneOffset.UTC));
+        OffsetDateTime dataAgora = OffsetDateTime.now(ZoneOffset.UTC);
 
         model.addAttribute("variavelteste", aluguelRepository.atrasoE());
         model.addAttribute("variavel", dataAgora);
