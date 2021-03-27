@@ -1,27 +1,26 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <script type="text/javascript"
             src="https://www.google.com/jsapi"></script>
-    <script th:inline="javascript">
+    <script th:inline="text/javascript">
+
       google.load("visualization", "1", {packages:["corechart"]});
 
       function drawChart() {
 
-
-        var data = google.visualization.arrayToDataTable([
-              ['Livros entregues atrasados', [[${atrasoE}]]],
-              ['Livros entregues no prazo', [[${atrasoP}]]],
-              ['Alugueis fora do prazo', [[${emA}]]],
-              ['Aluguéis dentro do prazo', [[${emP}]]],
+	var data = google.visualization.arrayToDataTable([
+          ['Linguagem', 'Quando gosto dela'],
+          ['Java',     [[${atrasoP}]]],
+          ['PHP',      30],
+          ['Javascript',  25],
+          ['C#', 5],
 
         ]);
 
         var options = {
-          		title: 'Aluguéis: ',
+          		title: 'Linguagens',//titulo do gráfico
 		is3D: false
         };
-
 
         var chart = new google.visualization
         .PieChart(document.getElementById('chart_div'));
@@ -30,7 +29,6 @@
       }
 
 	 google.setOnLoadCallback(drawChart);
-
     </script>
 </head>
 <body>
