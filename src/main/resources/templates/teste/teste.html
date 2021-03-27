@@ -11,10 +11,10 @@
             tabela.addColumn('number','valores');
             tabela.addRows([
 
-                ['Livro entregue em atraso', [[${variavelteste}]]],
-                ['Livro entregue no prazo',2],
-                ['Aluguel em atraso',3],
-                ['Aluguel no prazo',4],
+                ['Livro entregue em atraso', [[${atrasoE}]]],
+                ['Livro entregue no prazo', [[${atrasoP}]]],
+                ['Aluguel em atraso', [[${emA}]]],
+                ['Aluguel no prazo', [[${emP}]]],
             ]);
 
             var grafico = new google.visualization.PieChart(document.getElementById('graficoPizza'));

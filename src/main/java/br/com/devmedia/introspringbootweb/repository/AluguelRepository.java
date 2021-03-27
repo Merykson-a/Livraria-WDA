@@ -25,9 +25,9 @@ public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
     @Query("select count(m) from Aluguel m where m.prevDataDevolucao >= m.dataDevolucao")
     public long atrasoP();
 
-    @Query("select count(m) from Aluguel m where m.dataDevolucao is null")
+    @Query("select count(m) from Aluguel m where m.dataDevolucao is null and m.prevDataDevolucao < CURRENT_DATE")
     public long emA();
 
-    /*@Query("select count(m) from Aluguel m where m.prevDataDevolucao >= m.dataDevolucao")
-    public long emP();*/
+    @Query("select count(m) from Aluguel m where m.dataDevolucao is null and m.prevDataDevolucao >= CURRENT_DATE")
+    public long emP();
 }

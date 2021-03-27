@@ -26,8 +26,10 @@ public class HomeController {
 
         OffsetDateTime dataAgora = OffsetDateTime.now(ZoneOffset.UTC);
 
-        model.addAttribute("variavelteste", aluguelRepository.atrasoE());
-        model.addAttribute("variavel", dataAgora);
+        model.addAttribute("atrasoE", aluguelRepository.atrasoE());
+        model.addAttribute("atrasoP", aluguelRepository.atrasoP());
+        model.addAttribute("emA", aluguelRepository.emA());
+        model.addAttribute("emP", aluguelRepository.emP());
         return new ModelAndView("teste/teste", model);
     }
 
