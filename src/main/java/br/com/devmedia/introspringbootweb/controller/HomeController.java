@@ -20,7 +20,7 @@ public class HomeController {
     @GetMapping("/listar")
     public ModelAndView listar(ModelMap model) {
 
-        model.addAttribute("variavelteste", aluguelRepository.findAtraso());
+        model.addAttribute("variavelteste", aluguelRepository.teste());
         return new ModelAndView("teste/teste", model);
     }
 
