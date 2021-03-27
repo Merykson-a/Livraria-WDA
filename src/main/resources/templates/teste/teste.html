@@ -1,32 +1,38 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script th:inline="javascript">
-        google.charts.load('current', {'packages':['corechart']});
-
-        function desenharPizza (){
-
-            var tabela = new google.visualization.DataTable();
-            tabela.addColumn('string','categorias');
-            tabela.addColumn('number','valores');
-            tabela.addRows([
-
-                ['Livro entregue em atraso', [[${atrasoE}]]],
-                ['Livro entregue no prazo', [[${atrasoP}]]],
-                ['Aluguel em atraso', [[${emA}]]],
-                ['Aluguel no prazo', [[${emP}]]],
-            ]);
-
-            var grafico = new google.visualization.PieChart(document.getElementById('graficoPizza'));
-            grafico.draw(tabela);
-    }
-
-    google.charts.setOnLoadCallback(desenharPizza);
+    <script type="text/javascript"
+            src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
 
 
+      function drawChart() {
+
+
+        var data = google.visualization.arrayToDataTable([
+              ['Livros entregues atrasados', [[${atrasoE}]]],
+              ['Livros entregues no prazo', [[${atrasoP}]]],
+              ['Alugueis fora do prazo', [[${emA}]]],
+              ['Aluguéis dentro do prazo', [[${emP}]]],
+
+        ]);
+
+        var options = {
+          		title: 'Aluguéis: ',
+		is3D: false
+        };
+
+
+        var chart = new google.visualization
+        .PieChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+	 google.setOnLoadCallback(drawChart);
     </script>
 </head>
 <body>
-<div id="graficoPizza" class="w-auto p-3"></div>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
 </body>
 </html>
