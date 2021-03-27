@@ -4,7 +4,7 @@
             src="https://www.google.com/jsapi"></script>
     <script th:inline="javascript">
 
-      google.load("visualization", "4", {packages:["corechart"]});
+      google.load("visualization", "1", {packages:["corechart"]});
 
       function drawChart() {
 
@@ -19,7 +19,9 @@
 
         var options = {
           		title: 'Estatística aluguéis: ',
-		is3D: false
+		is3D: false,
+		 height: 300,
+         width: 400
         };
 
         var chart = new google.visualization
