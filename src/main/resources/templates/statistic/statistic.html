@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript"
+            src="https://www.google.com/jsapi"></script>
+    <script th:inline="javascript">
+
+      google.load("visualization", "1", {packages:["corechart"]});
+
+      function drawChart() {
+
+	var data = google.visualization.arrayToDataTable([
+          ['Linguagem', 'Quando gosto dela'],
+          ['Livros entregues atrasados', [[${noA}]]],
+          ['Livros entregues no prazo', [[${noP}]]],
+          ['Aluguéis em atraso', [[${emA}]]],
+          ['Aluguéis no prazo', [[${emP}]]],
+
+        ]);
+
+        var options = {
+          		title: 'Estatística aluguéis: ',
+		is3D: false
+        };
+
+        var chart = new google.visualization
+        .PieChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+	 google.setOnLoadCallback(drawChart);
+    </script>
+</head>
+<body>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
