@@ -20,10 +20,10 @@ public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
     Page<Aluguel> findById(long usuarioId, String pesquisa, Pageable pageable);
 
     @Query("select count(m) from Aluguel m where m.prevDataDevolucao < m.dataDevolucao")
-    public long atrasoE();
+    public long noA();
 
     @Query("select count(m) from Aluguel m where m.prevDataDevolucao >= m.dataDevolucao")
-    public long atrasoP();
+    public long noP();
 
     @Query("select count(m) from Aluguel m where m.dataDevolucao is null and m.prevDataDevolucao < CURRENT_DATE")
     public long emA();
