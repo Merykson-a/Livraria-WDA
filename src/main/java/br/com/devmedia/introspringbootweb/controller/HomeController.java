@@ -26,7 +26,7 @@ public class HomeController {
         Date dataAgora = new Date(String.valueOf(ZoneOffset.UTC));
 
         model.addAttribute("variavelteste", aluguelRepository.atrasoE());
-        model.addAttribute("variavelteste2", dataAgora);
+        model.addAttribute("variavel", dataAgora);
         return new ModelAndView("teste/teste", model);
     }
 
