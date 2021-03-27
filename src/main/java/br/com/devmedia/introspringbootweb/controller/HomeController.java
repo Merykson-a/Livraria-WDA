@@ -23,7 +23,10 @@ public class HomeController {
 
     @Autowired
     private AluguelRepository aluguelRepository;
+
+    @Autowired
     private UsuarioRepository usuarioRepository;
+
     private LivroRepository livroRepository;
     private EditoraRepository editoraRepository;
 
