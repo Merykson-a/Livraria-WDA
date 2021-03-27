@@ -1,8 +1,6 @@
-<html>
-<head>
-    <script type="text/javascript"
-            src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script th:inline="javascript">
       google.load("visualization", "1", {packages:["corechart"]});
 
 
@@ -30,6 +28,7 @@
       }
 
 	 google.setOnLoadCallback(drawChart);
+
     </script>
 </head>
 <body>
