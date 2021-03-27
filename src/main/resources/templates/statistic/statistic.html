@@ -29,10 +29,28 @@
       }
 
 	 google.setOnLoadCallback(drawChart);
+
+
     </script>
     <title>Estátistica</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<div id="chart_div" style="width: 900px; height: 500px;"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Estátistica</h1>
+        <div th:insert="menu/header :: header"></div>
+    </div>
+    <hr/>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <a class="btn btn-light" href="/home">Voltar</a>
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+</div>
 </body>
 </html>
