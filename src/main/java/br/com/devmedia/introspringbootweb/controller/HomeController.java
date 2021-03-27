@@ -27,7 +27,10 @@ public class HomeController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
     private LivroRepository livroRepository;
+
+    @Autowired
     private EditoraRepository editoraRepository;
 
     @GetMapping("/view")
