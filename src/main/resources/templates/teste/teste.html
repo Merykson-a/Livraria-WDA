@@ -1,25 +1,26 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <script type="text/javascript"
             src="https://www.google.com/jsapi"></script>
-    <script th:inline="javascript">
+    <script type="text/javascript">
 
       google.load("visualization", "1", {packages:["corechart"]});
 
       function drawChart() {
 
 	var data = google.visualization.arrayToDataTable([
-          ['Linguagem', 'Quando gosto dela'],
-          ['Livros entregues atrasados', [[${noA}]]],
-          ['Livros entregues no prazo', [[${noP}]]],
-          ['Aluguéis em atraso', [[${emA}]]],
-          ['Aluguéis no prazo', [[${emP}]]],
+          ['Estatistica', 'Numeros'],
+          ['Livros entregues atrasados', 10],
+          ['Livros entregues no prazo', 5],
+          ['Aluguéis em atraso', 6],
+          ['Aluguéis no prazo', 7],
 
         ]);
 
         var options = {
           		title: 'Estatística aluguéis: ',
-		is3D: false
+                is3D: false,
+                pieSliceText: 'value',
         };
 
         var chart = new google.visualization
@@ -29,9 +30,55 @@
       }
 
 	 google.setOnLoadCallback(drawChart);
+
+
     </script>
+    <title>Estatística</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<div id="chart_div" style="width: 900px; height: 500px;"></div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Estatística</h1>
+        <div th:insert="menu/header :: header"></div>
+    </div>
+    <hr/>
+    <div class="row" align="center">
+        <div id="chart_div" class="col-md-7" style="margin-left: -70px;"></div>
+        <div class="col-md-5">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de usuários: </th>
+                    <td scope="col">[[${}]]</td>
+                </tr>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de aluguéis: </th>
+                    <td scope="col">[[${}]]</td>
+                </tr>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de livros: </th>
+                    <td scope="col">[[${}]]</td>
+                </tr>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de editoras: </th>
+                    <td scope="col">[[${}]]</td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+
+
+    <a class="btn btn-light" href="/home">Voltar</a>
+    <hr/>
+    <footer class="footer">
+        <p>&copy; 2021 Livraria - WDA</p>
+    </footer>
+</div>
 </body>
 </html>

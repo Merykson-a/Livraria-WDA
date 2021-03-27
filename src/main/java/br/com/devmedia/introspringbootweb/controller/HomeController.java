@@ -30,6 +30,7 @@ public class HomeController {
         model.addAttribute("noP", aluguelRepository.noP());
         model.addAttribute("emA", aluguelRepository.emA());
         model.addAttribute("emP", aluguelRepository.emP());
+        model.addAttribute("contaA", aluguelRepository.count());
         return new ModelAndView("statistic/statistic", model);
     }
 

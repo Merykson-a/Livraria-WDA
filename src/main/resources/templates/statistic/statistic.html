@@ -9,7 +9,7 @@
       function drawChart() {
 
 	var data = google.visualization.arrayToDataTable([
-          ['Linguagem', 'Quando gosto dela'],
+          ['Estatistica', 'Numeros'],
           ['Livros entregues atrasados', [[${noA}]]],
           ['Livros entregues no prazo', [[${noP}]]],
           ['Aluguéis em atraso', [[${emA}]]],
@@ -19,10 +19,8 @@
 
         var options = {
           		title: 'Estatística aluguéis: ',
-		is3D: false,
-		legend: 'none',
-        pieSliceText: 'label',
-        pieStartAngle: 100,
+                is3D: false,
+                //pieSliceText: 'value'
         };
 
         var chart = new google.visualization
@@ -48,7 +46,34 @@
         <div th:insert="menu/header :: header"></div>
     </div>
     <hr/>
-    <div id="chart_div" class="row"></div>
+    <div class="row" align="center">
+        <div id="chart_div" class="col-md-7" style="margin-left: -70px;"></div>
+        <div class="col-md-5">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de usuários: </th>
+                    <td scope="col">[[${contaA}]]</td>
+                </tr>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de aluguéis: </th>
+                    <td scope="col">1</td>
+                </tr>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de livros: </th>
+                    <td scope="col">1</td>
+                </tr>
+                <tr>
+                    <th scope="col" style="background: #ADD8E6;">Total de editoras: </th>
+                    <td scope="col">1</td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+
+
     <a class="btn btn-light" href="/home">Voltar</a>
     <hr/>
     <footer class="footer">
