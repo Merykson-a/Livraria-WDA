@@ -43,6 +43,17 @@
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        th{
+            background: #ADD8E6;
+        }
+        tr{
+            height: 70px;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -56,22 +67,22 @@
         <div class="col-md-5" style="height: 450px;">
             <br>
             <br>
-            <table class="table table-bordered">
+            <table class="table">
                 <thead>
-                <tr style="height: 70px;">
-                    <th scope="col" style="background: #ADD8E6;">Total de usuários: </th>
+                <tr>
+                    <th scope="col" style="">Total de usuários: </th>
                     <td scope="col">[[${contaU}]]</td>
                 </tr>
-                <tr style="height: 70px;">
-                    <th scope="col" style="background: #ADD8E6;">Total de aluguéis: </th>
+                <tr>
+                    <th scope="col">Total de aluguéis: </th>
                     <td scope="col">[[${contaA}]]</td>
                 </tr>
-                <tr style="height: 70px;">
-                    <th scope="col" style="background: #ADD8E6;">Total de livros: </th>
+                <tr>
+                    <th scope="col">Total de livros: </th>
                     <td scope="col">[[${contaL}]]</td>
                 </tr>
-                <tr style="height: 70px;">
-                    <th scope="col" style="background: #ADD8E6;">Total de editoras: </th>
+                <tr>
+                    <th scope="col">Total de editoras: </th>
                     <td scope="col">[[${contaE}]]</td>
                 </tr>
                 </thead>
