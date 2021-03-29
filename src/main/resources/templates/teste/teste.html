@@ -10,10 +10,15 @@
 
 	var data = google.visualization.arrayToDataTable([
           ['Estatistica', 'Numeros'],
-          ['Livros entregues atrasados', 10],
-          ['Livros entregues no prazo', 5],
-          ['Aluguéis em atraso', 6],
-          ['Aluguéis no prazo', 7],
+          ['Livros entregues atrasados', 1],
+          ['Livros entregues no prazo', 2],
+          ['Aluguéis em atraso', 3],
+          ['Aluguéis teste1', 4],
+          ['Aluguéis teste2', 5],
+          ['Aluguéis teste3', 6],
+          ['Aluguéis teste4', 7],
+          ['Aluguéis teste5', 8],
+          ['Aluguéis teste6', 9],
 
         ]);
 
@@ -46,26 +51,28 @@
         <div th:insert="menu/header :: header"></div>
     </div>
     <hr/>
-    <div class="row" align="center">
-        <div id="chart_div" class="col-md-7" style="margin-left: -70px;"></div>
-        <div class="col-md-5">
+    <div class="row">
+        <div id="chart_div" class="col-md-7" style="height: 450px;"></div>
+        <div class="col-md-5" style="height: 450px;">
+            <br>
+            <br>
             <table class="table table-bordered">
                 <thead>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de usuários: </th>
-                    <td scope="col">[[${}]]</td>
+                    <td scope="col">[[${contaU}]]</td>
                 </tr>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de aluguéis: </th>
-                    <td scope="col">[[${}]]</td>
+                    <td scope="col">[[${contaA}]]</td>
                 </tr>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de livros: </th>
-                    <td scope="col">[[${}]]</td>
+                    <td scope="col">[[${contaL}]]</td>
                 </tr>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de editoras: </th>
-                    <td scope="col">[[${}]]</td>
+                    <td scope="col">[[${contaE}]]</td>
                 </tr>
                 </thead>
             </table>

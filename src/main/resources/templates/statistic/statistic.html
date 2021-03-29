@@ -46,24 +46,26 @@
         <div th:insert="menu/header :: header"></div>
     </div>
     <hr/>
-    <div class="row" align="center">
-        <div id="chart_div" class="col-md-7"></div>
-        <div class="col-md-5">
+    <div class="row">
+        <div id="chart_div" class="col-md-7" style="height: 450px;"></div>
+        <div class="col-md-5" style="height: 450px;">
+            <br>
+            <br>
             <table class="table table-bordered">
                 <thead>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de usuários: </th>
                     <td scope="col">[[${contaU}]]</td>
                 </tr>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de aluguéis: </th>
                     <td scope="col">[[${contaA}]]</td>
                 </tr>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de livros: </th>
                     <td scope="col">[[${contaL}]]</td>
                 </tr>
-                <tr>
+                <tr style="height: 70px;">
                     <th scope="col" style="background: #ADD8E6;">Total de editoras: </th>
                     <td scope="col">[[${contaE}]]</td>
                 </tr>
