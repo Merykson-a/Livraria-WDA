@@ -21,7 +21,7 @@ public class Usuario{
 
     @Column(nullable = false, length = 60)
     /*@NotBlank(message = "O campo nome não pode ser vazio!")*/
-    @Size(max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
+    @Size(min= 3,max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Pattern(regexp="^[a-zA-ZÀ-Úà-ú]+( [a-zA-ZÀ-Úà-ú]+)*$", message = "Verifique o nome inserido(Sem caracteres especiais, números e/ou espaços no início e fim).")
     private String nome;
 
