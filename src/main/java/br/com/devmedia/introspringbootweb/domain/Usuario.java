@@ -22,25 +22,25 @@ public class Usuario{
     @Column(nullable = false, length = 60)
     /*@NotBlank(message = "O campo nome não pode ser vazio!")*/
     /*@Size(max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
-    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira um nome válido, entre 3 e 60 caracteres, e sem caracteres especiais ou/e números e espaços no início!")
+    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira um nome válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
     private String nome;
 
 
     @Column(nullable = false)
-    @NotBlank(message = "O campo endereço não pode ser vazio!")
-    @Size(min = 5, max = 60, message = "No mínimo 5 caracteres e no máximo 60!")
-    @Pattern(regexp="[a-zA-Z à-úÀ-Ú,.:°0-9]{3,60}", message = "Insira um endereço válido, entre 3 e 60 caracteres, e sem caracteres especiais ou/e números!")
+    /*@NotBlank(message = "O campo endereço não pode ser vazio!")*/
+    /*@Size(min = 5, max = 60, message = "No mínimo 5 caracteres e no máximo 60!")*/
+    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú,.:°0-9]{3,60}", message = "Insira um endereço válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
     private String endereco;
 
 
     @Column(nullable = false)
-    @NotBlank(message = "O campo cidade não pode ser vazio!")
+    /*@NotBlank(message = "O campo cidade não pode ser vazio!")*/
     /*@Size(max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
-    @Pattern(regexp="[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira uma cidade válida, entre 3 e 60 caracteres, e sem caracteres especiais ou/e números!")
+    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira uma cidade válida, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
     private String cidade;
 
 
-    @NotBlank(message = "O campo email não pode ser vazio!")
+    /*@NotBlank(message = "O campo email não pode ser vazio!")*/
     @Column(nullable = false)
     @Pattern(regexp="[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", message = "Insira um email válido, no formato: Email@email.com!")
     private String email;
