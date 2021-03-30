@@ -22,21 +22,20 @@ public class Usuario{
     @Column(nullable = false, length = 60)
     /*@NotBlank(message = "O campo nome não pode ser vazio!")*/
     /*@Size(max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
-    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira um nome válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
+    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú]+( [a-zA-ZÀ-Úà-ú]+)*$.{3,60}", message = "Insira um nome válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
     private String nome;
 
 
     @Column(nullable = false)
     /*@NotBlank(message = "O campo endereço não pode ser vazio!")*/
-    /*@Size(min = 5, max = 60, message = "No mínimo 5 caracteres e no máximo 60!")*/
-    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú,.:°0-9]{3,60}", message = "Insira um endereço válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
+    @Size(min = 5, max = 60, message = "No mínimo 5 caracteres e no máximo 60!")
+    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú]+( [a-zA-ZÀ-Úà-ú]+)*$", message = "Insira um endereço válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
     private String endereco;
-
 
     @Column(nullable = false)
     /*@NotBlank(message = "O campo cidade não pode ser vazio!")*/
-    /*@Size(max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
-    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira uma cidade válida, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
+    @Size(max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
+    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú]+( [a-zA-ZÀ-Úà-ú]+)*$", message = "Insira uma cidade válida, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
     private String cidade;
 
 
