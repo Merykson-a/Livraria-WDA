@@ -20,16 +20,16 @@ public class Usuario{
 
 
     @Column(nullable = false, length = 60)
-    @NotBlank(message = "O campo nome não pode ser vazio!")
+    /*@NotBlank(message = "O campo nome não pode ser vazio!")*/
     /*@Size(max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
-    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira um nome válido, entre 3 e 60 caracteres, e sem caracteres especiais ou/e números!")
+    @Pattern(regexp="\\S+[a-zA-Z à-úÀ-Ú]{3,60}", message = "Insira um nome válido, entre 3 e 60 caracteres, e sem caracteres especiais ou/e números e espaços no início!")
     private String nome;
 
 
     @Column(nullable = false)
     @NotBlank(message = "O campo endereço não pode ser vazio!")
     @Size(min = 5, max = 60, message = "No mínimo 5 caracteres e no máximo 60!")
-    @Pattern(regexp="[a-zA-Z à-úÀ-Ú,.:°0-9]{3,60}", message = "Insira um nome válido, entre 3 e 60 caracteres, e sem caracteres especiais ou/e números!")
+    @Pattern(regexp="[a-zA-Z à-úÀ-Ú,.:°0-9]{3,60}", message = "Insira um endereço válido, entre 3 e 60 caracteres, e sem caracteres especiais ou/e números!")
     private String endereco;
 
 
