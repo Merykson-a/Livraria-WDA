@@ -18,7 +18,7 @@ public class Editora {
     /*@Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
     @Column(nullable = false, length = 60)
     /*@NotBlank(message = "O campo nome não pode ser vazio")*/
-    @Pattern(regexp="\\S+[a-zA-Z á-úÀ-Ú:,-]\\S{3,60}", message = "Insira uma cidade válida, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
+    @Pattern(regexp="\\S+[a-zA-Z á-úÀ-Ú:,-]{3,60}", message = "Insira uma cidade válida, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
     private String nome;
 
     /*@Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")*/
