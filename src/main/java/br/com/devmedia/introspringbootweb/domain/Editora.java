@@ -18,13 +18,13 @@ public class Editora {
     @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false, length = 60)
     /*@NotBlank(message = "O campo nome não pode ser vazio")*/
-    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú]+( [a-zA-ZÀ-Úà-ú]+)*$", message = "Insira uma cidade válida, sem caracteres especiais, números e/ou espaços no início e fim!")
+    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú]+( [a-zA-ZÀ-Úà-ú]+)*$", message = "Verifique o nome inserido(Sem caracteres especiais, números e/ou espaços no início e fim).")
     private String nome;
 
     @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false)
     /*@NotBlank(message = "O campo cidade não pode ser vazio")*/
-    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú-]+( [a-zA-ZÀ-Úà-ú-]+)*$", message = "Insira uma cidade válida, sem caracteres especiais, números e/ou espaços no início e fim!")
+    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú-]+( [a-zA-ZÀ-Úà-ú-]+)*$", message = "Verifique a cidade inserida(Sem caracteres especiais, números e/ou espaços no início e fim).")
     private String cidade;
 
     @OneToMany

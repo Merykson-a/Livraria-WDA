@@ -23,13 +23,13 @@ public class Livro {
     @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false, length = 50)
     /*@NotBlank(message = "O nome não pode ser vazio")*/
-    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú:,-]+( [a-zA-ZÀ-Úà-ú:,-]+)*$", message = "Insira um nome válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!!")
+    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú:,-]+( [a-zA-ZÀ-Úà-ú:,-]+)*$", message = "Verifique o nome inserido(Sem caracteres especiais, números e/ou espaços no início e fim).")
     private String nome;
 
     @Size(min = 3, max = 60, message = "No mínimo 3 caracteres e no máximo 60!")
     @Column(nullable = false, length = 50)
     /*@NotBlank(message = "O autor não pode ser vazio")*/
-    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú-´`']+( [a-zA-ZÀ-Úà-ú-´`']+)*$", message = "Insira um autor válido, entre 3 e 60 caracteres, sem caracteres especiais, números e/ou espaços no início!")
+    @Pattern(regexp="^[a-zA-ZÀ-Úà-ú-´`']+( [a-zA-ZÀ-Úà-ú-´`']+)*$", message = "Verifique o autor inserido(Sem caracteres especiais, números e/ou espaços no início e fim).")
     private String autor;
 
     @Column(nullable = false, length = 50)
